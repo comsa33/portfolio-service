@@ -23,6 +23,9 @@ class Career(db.Model):
     def __repr__(self):
         return f'Career {self.id}'
 
+    def to_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+
 
 class CareerProject(db.Model):
     __tablename__ = 'career_project'
@@ -35,3 +38,6 @@ class CareerProject(db.Model):
 
     def __repr__(self):
         return f'CareerProject {self.id}'
+
+    def to_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
