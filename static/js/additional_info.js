@@ -106,8 +106,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById("submit-project").addEventListener("click", function() {
+        event.preventDefault(); // 기본 submit 동작을 막음
+        console.log("Submit career clicked");
         const projectData = {
             basic_info_id: document.getElementById("project_basic_info_id").value,  // 드롭다운에서 선택
+            career_id: document.getElementById("career_id").value,  // 드롭다운에서 선택
             project_name_eng: document.getElementById("project_name_eng").value,
             project_name_kor: document.getElementById("project_name_kor").value,
             project_main_type_eng: document.getElementById("project_main_type_eng").value,
