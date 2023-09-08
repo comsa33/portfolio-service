@@ -5,6 +5,7 @@ class Project(db.Model):
     __tablename__ = 'project'
 
     id = db.Column(db.Integer, primary_key=True)
+    career_id = db.Column(db.Integer, db.ForeignKey('career.id'), nullable=True)
     project_name_eng = db.Column(db.String(50), nullable=False)
     project_name_kor = db.Column(db.String(50), nullable=False)
     project_main_type_eng = db.Column(db.String(50), nullable=False)
@@ -22,9 +23,9 @@ class Project(db.Model):
     role_description_kor = db.Column(db.Text, nullable=False)
     issue_description_eng = db.Column(db.Text, nullable=False)
     issue_description_kor = db.Column(db.Text, nullable=False)
-    project_link = db.Column(db.String(50), nullable=False)
-    code_link = db.Column(db.String(50), nullable=False)
-    project_image = db.Column(db.String(50), nullable=False)
+    project_link = db.Column(db.String(50), nullable=True)
+    code_link = db.Column(db.String(50), nullable=True)
+    project_image = db.Column(db.String(50), nullable=True)
     basic_info_id = db.Column(db.Integer, db.ForeignKey('basic_info.id'), nullable=False)
     basic_info = db.relationship('BasicInfo', backref=db.backref('projects', lazy=True))
 

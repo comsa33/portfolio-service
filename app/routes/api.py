@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 
-from app.models import BasicInfo, Career, CareerProject, Education, Project, ProjectSkill, Skill
+from app.models import BasicInfo, Career, Education, Project, ProjectSkill, Skill
 from app import db
 
 
