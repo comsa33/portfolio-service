@@ -6,8 +6,8 @@ class Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     career_id = db.Column(db.Integer, db.ForeignKey('career.id'), nullable=True)
-    project_name_eng = db.Column(db.String(50), nullable=False)
-    project_name_kor = db.Column(db.String(50), nullable=False)
+    project_name_eng = db.Column(db.String(200), nullable=False)
+    project_name_kor = db.Column(db.String(200), nullable=False)
     project_main_type_eng = db.Column(db.String(50), nullable=False)
     project_main_type_kor = db.Column(db.String(50), nullable=False)
     project_sub_type_eng = db.Column(db.String(50), nullable=False)
