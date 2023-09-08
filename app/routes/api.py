@@ -9,8 +9,9 @@ api = Blueprint('api', __name__)
 
 @api.route('/basic_info', methods=['GET'])
 def get_basic_info():
-    basic_info = BasicInfo.query.first()
-    return jsonify(basic_info.to_dict() if basic_info else {})
+    basic_infos = BasicInfo.query.all()
+    basic_infos_list = [basic_info.to_dict() for basic_info in basic_infos]
+    return jsonify(basic_infos_list)
 
 
 @api.route('/basic_info', methods=['POST'])
