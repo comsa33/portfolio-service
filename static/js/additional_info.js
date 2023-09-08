@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Your code to handle form submission and send the data to the server
     document.getElementById("submit-career").addEventListener("click", function() {
+        event.preventDefault(); // 기본 submit 동작을 막음
         console.log("Submit career clicked"); // 이 로그가 보이는지 확인
         const careerData = {
             basic_info_id: document.getElementById("career-basic-info-id").value,  // 드롭다운에서 선택
