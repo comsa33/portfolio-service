@@ -54,7 +54,7 @@ function loadSkillData() {
             data.forEach(skill => {
                 const option = document.createElement("option");
                 option.value = skill.id;
-                option.textContent = skill.name_kor;
+                option.textContent = skill.skill_name_kor;
                 skillDropdown.appendChild(option);
             });
         })
@@ -139,7 +139,20 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Project data saved:", data);
+            const projectId = data.project_id; // 백엔드에서 보내주는 프로젝트 ID
+            const skillIds = Array.from(document.getElementById("skill_ids").selectedOptions).map(option => option.value);
+            
+            fetch("/api/project_skill", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ project_id: projectId, skill_ids: skillIds })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Project and Skill data saved:", data);
+            });
         })
         .catch((error) => {
             console.error("Error:", error);
