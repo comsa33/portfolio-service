@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("/api/basic_info")
     .then(response => response.json())
     .then(data => {
-        const dropdownIds = ["career-basic-info-id", "skill-basic-info-id", "education-basic-info-id"];
+        const dropdownIds = ["career-basic-info-id", "project-basic-info-id", "skill-basic-info-id", "education-basic-info-id"];
         
         dropdownIds.forEach((dropdownId) => {
             const basicInfoDropdown = document.getElementById(dropdownId);
