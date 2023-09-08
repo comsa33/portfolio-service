@@ -102,7 +102,7 @@ def create_project():
     return jsonify(new_project.to_dict()), 201
 
 
-@api.route('/api/project_skill', methods=['POST'])
+@api.route('/project_skill', methods=['POST'])
 def add_project_skill():
     data = request.json
     project_id = data.get('project_id')
