@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json())
         .then(data => {
-            const projectId = data.project_id; // 백엔드에서 보내주는 프로젝트 ID
+            const projectId = data.id; // 백엔드에서 보내주는 프로젝트 ID
             const skillIds = Array.from(document.getElementById("skill_ids").selectedOptions).map(option => option.value);
             
             fetch("/api/project_skill", {
