@@ -16,8 +16,8 @@
         <h2>Career Info</h2>
         <form id="career-form">
             <div class="form-group">
-                <label for="career-basic-info-id">Basic Info ID</label>
-                <select id="career-basic-info-id" class="form-control">
+                <label for="career_basic_info_id">Basic Info ID</label>
+                <select id="career_basic_info_id" class="form-control">
                     <!-- Options filled dynamically via JavaScript -->
                 </select>
             </div>
@@ -54,20 +54,20 @@
                 <input type="text" class="form-control" id="position_kor" required>
             </div>
             <div class="form-group">
-                <label for="start_date">Start Date</label>
-                <input type="date" class="form-control" id="start_date" required>
+                <label for="career_start_date">Start Date</label>
+                <input type="date" class="form-control" id="career_start_date" required>
             </div>
             <div class="form-group">
-                <label for="end_date">End Date</label>
-                <input type="date" class="form-control" id="end_date" required>
+                <label for="career_end_date">End Date</label>
+                <input type="date" class="form-control" id="career_end_date" required>
             </div>
             <div class="form-group">
-                <label for="description_eng">Description (English)</label>
-                <textarea class="form-control" id="description_eng" required></textarea>
+                <label for="career_description_eng">Description (English)</label>
+                <textarea class="form-control" id="career_description_eng" required></textarea>
             </div>
             <div class="form-group">
-                <label for="description_kor">Description (Korean)</label>
-                <textarea class="form-control" id="description_kor" required></textarea>
+                <label for="career_description_kor">Description (Korean)</label>
+                <textarea class="form-control" id="career_description_kor" required></textarea>
             </div>
             <button type="submit" id="submit-career" class="btn btn-primary">Submit Career</button>
         </form>
@@ -107,11 +107,11 @@
             </div>
             <div class="form-group">
                 <label for="start_date">Start Date</label>
-                <input type="date" class="form-control" id="start_date" required>
+                <input type="date" class="form-control" id="project_start_date" required>
             </div>
             <div class="form-group">
                 <label for="end_date">End Date</label>
-                <input type="date" class="form-control" id="end_date" required>
+                <input type="date" class="form-control" id="project_end_date" required>
             </div>
             <div class="form-group">
                 <label for="no_of_team_members">Number of Team Members</label>
@@ -169,8 +169,8 @@
         <h2>Skill Info</h2>
         <form id="skill-form">
             <div class="form-group">
-                <label for="skill-basic-info-id">Basic Info ID</label>
-                <select id="skill-basic-info-id" class="form-control">
+                <label for="skill_basic_info_id">Basic Info ID</label>
+                <select id="skill_basic_info_id" class="form-control">
                     <!-- Options filled dynamically via JavaScript -->
                 </select>
             </div>
@@ -191,20 +191,20 @@
                 <input type="text" class="form-control" id="skill_type_kor" required>
             </div>
             <div class="form-group">
-                <label for="skill-start-date">Start Date</label>
-                <input type="date" class="form-control" id="skill-start-date" required>
+                <label for="skill_start_date">Start Date</label>
+                <input type="date" class="form-control" id="skill_start_date" required>
             </div>
             <div class="form-group">
                 <label for="skill_level">Skill Level</label>
                 <input type="number" class="form-control" id="skill_level" required>
             </div>
             <div class="form-group">
-                <label for="description_eng">Description (English)</label>
-                <textarea class="form-control" id="description_eng" required></textarea>
+                <label for="skill_description_eng">Description (English)</label>
+                <textarea class="form-control" id="skill_description_eng" required></textarea>
             </div>
             <div class="form-group">
-                <label for="description_kor">Description (Korean)</label>
-                <textarea class="form-control" id="description_kor" required></textarea>
+                <label for="skill_description_kor">Description (Korean)</label>
+                <textarea class="form-control" id="skill_description_kor" required></textarea>
             </div>
             <div class="form-group">
                 <label for="skill_image">Skill Image</label>
@@ -217,8 +217,8 @@
         <h2>Education Info</h2>
         <form id="education-form">
             <div class="form-group">
-                <label for="education-basic-info-id">Basic Info ID</label>
-                <select id="education-basic-info-id" class="form-control">
+                <label for="education_basic_info_id">Basic Info ID</label>
+                <select id="education_basic_info_id" class="form-control">
                     <!-- Options filled dynamically via JavaScript -->
                 </select>
             </div>
@@ -247,20 +247,20 @@
                 <input type="text" class="form-control" id="major_kor" required>
             </div>
             <div class="form-group">
-                <label for="education-start-date">Start Date</label>
-                <input type="date" class="form-control" id="education-start-date" required>
+                <label for="education_start_date">Start Date</label>
+                <input type="date" class="form-control" id="education_start_date" required>
             </div>
             <div class="form-group">
-                <label for="education-end-date">End Date</label>
-                <input type="date" class="form-control" id="education-end-date" required>
+                <label for="education_end_date">End Date</label>
+                <input type="date" class="form-control" id="education_end_date" required>
             </div>
             <div class="form-group">
-                <label for="education-description-eng">Description (English)</label>
-                <textarea class="form-control" id="education-description-eng" required></textarea>
+                <label for="education_description_eng">Description (English)</label>
+                <textarea class="form-control" id="education_description_eng" required></textarea>
             </div>
             <div class="form-group">
-                <label for="education-description-kor">Description (Korean)</label>
-                <textarea class="form-control" id="education-description-kor" required></textarea>
+                <label for="education_description_kor">Description (Korean)</label>
+                <textarea class="form-control" id="education_description_kor" required></textarea>
             </div>
             <div class="form-group">
                 <label for="logo_image">Logo Image</label>
@@ -268,6 +268,7 @@
             </div>
             <button type="submit" id="submit-education" class="btn btn-primary">Submit Education</button>
         </form>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("/api/basic_info")
     .then(response => response.json())
     .then(data => {
-        const dropdownIds = ["career-basic-info-id", "project-basic-info-id", "skill-basic-info-id", "education-basic-info-id"];
+        const dropdownIds = ["career_basic_info_id", "project_basic_info_id", "skill_basic_info_id", "education_basic_info_id"];
         
         dropdownIds.forEach((dropdownId) => {
             const basicInfoDropdown = document.getElementById(dropdownId);
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // 기본 submit 동작을 막음
         console.log("Submit career clicked"); // 이 로그가 보이는지 확인
         const careerData = {
-            basic_info_id: document.getElementById("career-basic-info-id").value,  // 드롭다운에서 선택
+            basic_info_id: document.getElementById("career_basic_info_id").value,  // 드롭다운에서 선택
             company_name_eng: document.getElementById("company_name_eng").value,
             company_name_kor: document.getElementById("company_name_kor").value,
             company_type_eng: document.getElementById("company_type_eng").value,
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
             department_kor: document.getElementById("department_kor").value,
             position_eng: document.getElementById("position_eng").value,
             position_kor: document.getElementById("position_kor").value,
-            start_date: document.getElementById("career-start-date").value,
-            end_date: document.getElementById("career-end-date").value,
-            description_eng: document.getElementById("career-description-eng").value,
-            description_kor: document.getElementById("career-description-kor").value
+            start_date: document.getElementById("career_start_date").value,
+            end_date: document.getElementById("career_end_date").value,
+            description_eng: document.getElementById("career_description_eng").value,
+            description_kor: document.getElementById("career_description_kor").value
         };
     
         fetch("/api/career", {
@@ -57,15 +57,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("submit-project").addEventListener("click", function() {
         const projectData = {
-            basic_info_id: document.getElementById("project-basic-info-id").value,  // 드롭다운에서 선택
+            basic_info_id: document.getElementById("project_basic_info_id").value,  // 드롭다운에서 선택
             project_name_eng: document.getElementById("project_name_eng").value,
             project_name_kor: document.getElementById("project_name_kor").value,
             project_main_type_eng: document.getElementById("project_main_type_eng").value,
             project_main_type_kor: document.getElementById("project_main_type_kor").value,
             project_sub_type_eng: document.getElementById("project_sub_type_eng").value,
             project_sub_type_kor: document.getElementById("project_sub_type_kor").value,
-            start_date: document.getElementById("project-start-date").value,
-            end_date: document.getElementById("project-end-date").value,
+            start_date: document.getElementById("project_start_date").value,
+            end_date: document.getElementById("project_end_date").value,
             no_of_team_members: document.getElementById("no_of_team_members").value,
             team_name_eng: document.getElementById("team_name_eng").value,
             team_name_kor: document.getElementById("team_name_kor").value,
@@ -98,15 +98,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("submit-skill").addEventListener("click", function() {
         const skillData = {
-            basic_info_id: document.getElementById("skill-basic-info-id").value,  // 드롭다운에서 선택
+            basic_info_id: document.getElementById("skill_basic_info_id").value,  // 드롭다운에서 선택
             skill_name_eng: document.getElementById("skill_name_eng").value,
             skill_name_kor: document.getElementById("skill_name_kor").value,
             skill_type_eng: document.getElementById("skill_type_eng").value,
             skill_type_kor: document.getElementById("skill_type_kor").value,
-            start_date: document.getElementById("skill-start-date").value,
-            skill_level: document.getElementById("skill-level").value,
-            description_eng: document.getElementById("description_eng").value,
-            description_kor: document.getElementById("description_kor").value,
+            start_date: document.getElementById("skill_start_date").value,
+            skill_level: document.getElementById("skill_level").value,
+            description_eng: document.getElementById("skill_description_eng").value,
+            description_kor: document.getElementById("skill_description_kor").value,
             skill_image: document.getElementById("skill_image").value
         };
     
@@ -128,17 +128,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("submit-education").addEventListener("click", function() {
         const educationData = {
-            basic_info_id: document.getElementById("education-basic-info-id").value,
+            basic_info_id: document.getElementById("education_basic_info_id").value,
             school_name_eng: document.getElementById("school_name_eng").value,
             school_name_kor: document.getElementById("school_name_kor").value,
             degree_eng: document.getElementById("degree_eng").value,
             degree_kor: document.getElementById("degree_kor").value,
             major_eng: document.getElementById("major_eng").value,
             major_kor: document.getElementById("major_kor").value,
-            start_date: document.getElementById("education-start-date").value,
-            end_date: document.getElementById("education-end-date").value,
-            description_eng: document.getElementById("education-description-eng").value,
-            description_kor: document.getElementById("education-description-kor").value,
+            start_date: document.getElementById("education_start_date").value,
+            end_date: document.getElementById("education_end_date").value,
+            description_eng: document.getElementById("education_description_eng").value,
+            description_kor: document.getElementById("education_description_kor").value,
             logo_image: document.getElementById("logo_image").value
         };
     
