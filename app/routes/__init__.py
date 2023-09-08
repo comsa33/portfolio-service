@@ -18,3 +18,8 @@ def main_page():
 @main_bp.route('/basic_info')
 def basic_info_page():
     return render_template('basic_info.html')
+
+
+@main_bp.route('/additional_info')
+def additional_info_page():
+    return render_template('additional_info.html')
