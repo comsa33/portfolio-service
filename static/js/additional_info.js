@@ -1,4 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
+// 커리어 데이터를 불러와서 dropdown에 추가하는 함수
+function loadCareerData() {
+    fetch("/api/career")
+    .then(response => response.json())
+    .then(data => {
+        const selectElement = document.getElementById("career_id");
+        data.forEach(career => {
+            const option = document.createElement("option");
+            option.value = career.id;
+            option.textContent = career.company_name_eng;
+            selectElement.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
+}
+
+function loadBasicInfoData() {
     // Fetch basic_info IDs and populate the dropdowns for all forms
     fetch("/api/basic_info")
     .then(response => response.json())
@@ -18,7 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => {
         console.error('An error occurred:', error);
     });
-    
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // basic_info 데이터 로딩 로직 호출
+    loadBasicInfoData();
+    // 커리어 데이터 로딩 로직 호출
+    loadCareerData();
+
     // Your code to handle form submission and send the data to the server
     document.getElementById("submit-career").addEventListener("click", function() {
         const careerData = {

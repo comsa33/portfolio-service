@@ -14,6 +14,12 @@ def get_basic_info():
     return jsonify(basic_infos_list)
 
 
+@api.route('/career', methods=['GET'])
+def get_career():
+    careers = Career.query.all()
+    return jsonify([career.to_dict() for career in careers]), 200
+
+
 @api.route('/basic_info', methods=['POST'])
 def update_basic_info():
     data = request.get_json()
