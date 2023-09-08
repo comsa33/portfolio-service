@@ -4,10 +4,17 @@ function loadCareerData() {
     .then(response => response.json())
     .then(data => {
         const selectElement = document.getElementById("career_id");
+        
+        // Null 옵션 추가
+        const nullOption = document.createElement("option");
+        nullOption.value = "";
+        nullOption.textContent = "선택 안 함";
+        selectElement.appendChild(nullOption);
+
         data.forEach(career => {
             const option = document.createElement("option");
             option.value = career.id;
-            option.textContent = career.company_name_eng;
+            option.textContent = career.company_name_kor;
             selectElement.appendChild(option);
         });
     })
@@ -28,7 +35,7 @@ function loadBasicInfoData() {
             data.forEach(basicInfo => {
                 const option = document.createElement("option");
                 option.value = basicInfo.id;
-                option.textContent = basicInfo.first_name_eng + " " + basicInfo.last_name_eng;
+                option.textContent = basicInfo.last_name_kor + basicInfo.first_name_kor;
                 basicInfoDropdown.appendChild(option);
             });
         });
