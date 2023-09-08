@@ -20,6 +20,12 @@ def get_career():
     return jsonify([career.to_dict() for career in careers]), 200
 
 
+@api.route('/skill', methods=['GET'])
+def get_skills():
+    skills = Skill.query.all()
+    return jsonify([skill.to_dict() for skill in skills])
+
+
 @api.route('/basic_info', methods=['POST'])
 def update_basic_info():
     data = request.get_json()
@@ -94,6 +100,31 @@ def create_project():
     db.session.add(new_project)
     db.session.commit()
     return jsonify(new_project.to_dict()), 201
+
+
+@api.route('/api/project_skill', methods=['POST'])
+def add_project_skill():
+    data = request.json
+    project_id = data.get('project_id')
+    skill_ids = data.get('skill_ids', [])
+
+    if project_id is None:
+        return jsonify({'error': 'project_id is required'}), 400
+
+    try:
+        for skill_id in skill_ids:
+            new_project_skill = ProjectSkill(
+                project_id=project_id,
+                skill_id=skill_id
+            )
+            db.session.add(new_project_skill)
+
+        db.session.commit()
+
+        return jsonify({'message': 'ProjectSkill data saved successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 
 
 @api.route('/skill', methods=['POST'])

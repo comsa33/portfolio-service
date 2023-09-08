@@ -45,11 +45,31 @@ function loadBasicInfoData() {
     });
 }
 
+function loadSkillData() {
+        // Fetch skill IDs and populate the multiple select dropdown for project form
+        fetch("/api/skill")
+        .then(response => response.json())
+        .then(data => {
+            const skillDropdown = document.getElementById("skill_ids");
+            data.forEach(skill => {
+                const option = document.createElement("option");
+                option.value = skill.id;
+                option.textContent = skill.name_kor;
+                skillDropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     // basic_info 데이터 로딩 로직 호출
     loadBasicInfoData();
     // 커리어 데이터 로딩 로직 호출
     loadCareerData();
+    // 스킬 데이터 로딩 로직 호출
+    loadSkillData();
 
     // Your code to handle form submission and send the data to the server
     document.getElementById("submit-career").addEventListener("click", function() {
