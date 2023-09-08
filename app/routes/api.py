@@ -76,6 +76,7 @@ def create_project():
     data = request.get_json()
     new_project = Project(
         basic_info_id=data['basic_info_id'],
+        career_id=data['career_id'],
         project_name_eng=data['project_name_eng'],
         project_name_kor=data['project_name_kor'],
         project_main_type_eng=data['project_main_type_eng'],
