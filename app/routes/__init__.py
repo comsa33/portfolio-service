@@ -13,3 +13,8 @@ def inject_current_year():
 @main_bp.route('/')
 def main_page():
     return render_template('main.html')
+
+
+@main_bp.route('/basic_info')
+def basic_info_page():
+    return render_template('basic_info.html')

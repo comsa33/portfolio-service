@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Basic Info Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Basic Info</h1>
+    <form id="basic-info-form">
+        <div class="form-group">
+            <label for="first_name_eng">First Name (English)</label>
+            <input type="text" class="form-control" id="first_name_eng" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name_eng">Last Name (English)</label>
+            <input type="text" class="form-control" id="last_name_eng" required>
+        </div>
+        <div class="form-group">
+            <label for="first_name_kor">First Name (Korean)</label>
+            <input type="text" class="form-control" id="first_name_kor" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name_kor">Last Name (Korean)</label>
+            <input type="text" class="form-control" id="last_name_kor" required>
+        </div>
+        <div class="form-group">
+            <label for="birth_date">Birth Date</label>
+            <input type="date" class="form-control" id="birth_date" required>
+        </div>
+        <div class="form-group">
+            <label for="title_eng">Title (English)</label>
+            <input type="text" class="form-control" id="title_eng" required>
+        </div>
+        <div class="form-group">
+            <label for="title_kor">Title (Korean)</label>
+            <input type="text" class="form-control" id="title_kor" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="address_eng">Address (English)</label>
+            <input type="text" class="form-control" id="address_eng" required>
+        </div>
+        <div class="form-group">
+            <label for="address_kor">Address (Korean)</label>
+            <input type="text" class="form-control" id="address_kor" required>
+        </div>
+        <div class="form-group">
+            <label for="github">GitHub</label>
+            <input type="text" class="form-control" id="github" required>
+        </div>
+        <div class="form-group">
+            <label for="linkedin">LinkedIn</label>
+            <input type="text" class="form-control" id="linkedin" required>
+        </div>
+        <div class="form-group">
+            <label for="introduction_eng">Introduction (English)</label>
+            <textarea class="form-control" id="introduction_eng" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="introduction_kor">Introduction (Korean)</label>
+            <textarea class="form-control" id="introduction_kor" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="profile_image">Profile Image URL</label>
+            <input type="text" class="form-control" id="profile_image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="basic_info.js"></script>
+
+</body>
+</html>

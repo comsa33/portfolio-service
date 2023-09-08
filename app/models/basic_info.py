@@ -24,3 +24,10 @@ class BasicInfo(db.Model):
 
     def __repr__(self):
         return f'BasicInfo {self.id}'
+
+    def to_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+
+    def update(self, data):
+        for key, value in data.items():
+            setattr(self, key, value)
