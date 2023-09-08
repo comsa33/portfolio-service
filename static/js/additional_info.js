@@ -1,15 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Fetch basic_info IDs and populate the dropdown
+    // Fetch basic_info IDs and populate the dropdowns for all forms
     fetch("/api/basic_info")
     .then(response => response.json())
     .then(data => {
-        const basicInfoDropdown = document.getElementById("career-basic-info-id");
-        data.forEach(basicInfo => {
-            const option = document.createElement("option");
-            option.value = basicInfo.id;
-            option.textContent = basicInfo.first_name_eng + " " + basicInfo.last_name_eng;
-            basicInfoDropdown.appendChild(option);
+        const dropdownIds = ["career-basic-info-id", "skill-basic-info-id", "education-basic-info-id"];
+        
+        dropdownIds.forEach((dropdownId) => {
+            const basicInfoDropdown = document.getElementById(dropdownId);
+            data.forEach(basicInfo => {
+                const option = document.createElement("option");
+                option.value = basicInfo.id;
+                option.textContent = basicInfo.first_name_eng + " " + basicInfo.last_name_eng;
+                basicInfoDropdown.appendChild(option);
+            });
         });
+    })
+    .catch(error => {
+        console.error('An error occurred:', error);
     });
     
     // Your code to handle form submission and send the data to the server
