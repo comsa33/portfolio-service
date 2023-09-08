@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>✏️RUO's Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Your page content goes here -->
+    <div>
+        <h1 class="title">✏️RUO's Portfolio</h1>
+
+    </div>
+
+    <div>
+        <h2 class="subtitle">About Me</h2>
+        <p class="content">
+            안녕하세요. 저는 이루오입니다. <br>
+            저는 현재 한국외국어대학교에서 컴퓨터공학을 전공하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+            저는 웹 개발자가 되기 위해 노력하고 있습니다. <br>
+        </p>
+    </div>
+    
+    <div>
+        <h2 class="subtitle">Skills</h2>
+
+    </div>
+
+    <div>
+        <h2 class="subtitle">Projects</h2>
+
+    </div>
+
+    <div>
+        <h2 class="subtitle">Contact</h2>
+        <p class="content"></p>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div>
+            <img src="{{ url_for('static', filename='images/toeic4all-logo.png') }}" alt="Logo" style="width: 50px; height: 50px;">
+        </div>
+        <div class="footer-text-container">
+            <small>&copy; {{ current_year }} Ruo Lee</small>
+            <small>LinkedIn: <a href="https://www.linkedin.com/in/ruo-lee-79864522a/">이루오</a> | Email: <a href="mailto:comsa333@gmail.com">comsa333@gmail.com</a> | Github: <a href="https://github.com/comsa33">comsa33</a></small>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Your JavaScript code goes here
+    </script>
+</body>
+
+</html>
