@@ -210,7 +210,8 @@
             </div>
             <div class="form-group">
                 <label for="skill_level">Skill Level</label>
-                <input type="number" class="form-control" id="skill_level" required>
+                <input type="range" class="form-control-range" id="skill_level" min="1" max="5" step="1" required>
+                <output id="skill_level_output"></output>
             </div>
             <div class="form-group">
                 <label for="skill_description_eng">Description (English)</label>
