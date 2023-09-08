@@ -9,7 +9,6 @@ python = "^3.9"
 flask = "^2.3.3"
 flask-sqlalchemy = "^3.0.5"
 psycopg2-binary = "^2.9.7"
-flask-migrate = "^4.0.4"
 
 
 [build-system]

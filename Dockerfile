@@ -11,7 +11,6 @@ WORKDIR /usr/src
 COPY requirements.txt pyproject.toml poetry.lock /usr/src/
 
 RUN apt update -y
-RUN apt upgrade -y
 RUN pip install -r requirements.txt
 RUN poetry config virtualenvs.create false
 RUN if [ -f pyproject.toml ]; then poetry install --verbose; fi
@@ -22,4 +21,4 @@ ENV FLASK_APP=run.py
 
 EXPOSE 5000
 
-CMD flask db upgrade && flask run --host=0.0.0.0
+CMD ["flask", "run", "--host=0.0.0.0"]
