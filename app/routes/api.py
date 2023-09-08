@@ -74,9 +74,13 @@ def create_career():
 @api.route('/project', methods=['POST'])
 def create_project():
     data = request.get_json()
+    career_id = data.get('career_id')
+    if career_id == "":
+        career_id = None
+
     new_project = Project(
         basic_info_id=data['basic_info_id'],
-        career_id=data['career_id'],
+        career_id=career_id,
         project_name_eng=data['project_name_eng'],
         project_name_kor=data['project_name_kor'],
         project_main_type_eng=data['project_main_type_eng'],
