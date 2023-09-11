@@ -10,7 +10,7 @@ function loadBasicInfoData() {
             data.forEach(basicInfo => {
                 const option = document.createElement("option");
                 option.value = basicInfo.id;
-                option.textContent = basicInfo.title_kor + basicInfo.last_name_kor + basicInfo.first_name_kor;
+                option.textContent = basicInfo.title_kor + ' / ' + basicInfo.last_name_kor + basicInfo.first_name_kor;
                 basicInfoDropdown.appendChild(option);
             });
         });
@@ -20,31 +20,43 @@ function loadBasicInfoData() {
     });
 }
 
-let careerData = {}; // 이곳에 모든 커리어 데이터를 저장합니다.
 function loadCareersbyBasicInfoId() {
+    const basicInfoDropdown = document.getElementById("basic_info_id");
+
     // Load careers when a basic_info_id is selected
-    document.getElementById("basic_info_id").addEventListener("change", function() {
+    basicInfoDropdown.addEventListener("change", function() {
         const basicInfoId = this.value;
+        fetchCareers(basicInfoId);
+    });
 
-        fetch(`/api/career?basic_info_id=${basicInfoId}`)
-        .then(response => response.json())
-        .then(data => {
-            careerData = {}; // 초기화
-            const careerSelect = document.getElementById("career_select");
-            careerSelect.innerHTML = "";
-            data.forEach(career => {
-                const option = document.createElement("option");
-                option.value = career.id;
-                option.text = career.company_name_eng;
-                careerSelect.appendChild(option);
-                careerData[career.id] = career; // ID를 키로 하여 데이터 저장
-            });
+    // 초기 로딩 시에는 자동으로 첫 번째 아이템에 대한 커리어를 로딩
+    const initialBasicInfoId = basicInfoDropdown.value;
+    if (initialBasicInfoId) {
+        fetchCareers(initialBasicInfoId);
+    }
+}
 
-            // Show the career form
-            document.getElementById("career_form").style.display = "block";
+let careerData = {}; // 이곳에 모든 커리어 데이터를 저장합니다.
+function fetchCareers(basicInfoId) {
+    fetch(`/api/career?basic_info_id=${basicInfoId}`)
+    .then(response => response.json())
+    .then(data => {
+        careerData = {}; // 초기화
+        const careerSelect = document.getElementById("career_select");
+        careerSelect.innerHTML = "";
+        data.forEach(career => {
+            const option = document.createElement("option");
+            option.value = career.id;
+            option.text = career.company_name_kor;
+            careerSelect.appendChild(option);
+            careerData[career.id] = career; // ID를 키로 하여 데이터 저장
         });
+
+        // Show the career form
+        document.getElementById("career_form").style.display = "block";
     });
 }
+
 
 function loadCareerDataintoForm() {
     // Load career details into the form when a career is selected
