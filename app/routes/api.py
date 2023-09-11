@@ -203,6 +203,7 @@ def create_or_update_project():
         db.session.commit()
         return jsonify(new_project.to_dict()), 201
 
+import traceback
 
 @api.route('/project_skill', methods=['POST'])
 def add_project_skill():
@@ -225,6 +226,7 @@ def add_project_skill():
 
         return jsonify({'message': 'ProjectSkill data saved successfully'}), 201
     except Exception as e:
+        traceback.print_exc()
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
@@ -250,6 +252,7 @@ def remove_project_skill():
 
         return jsonify({'message': 'ProjectSkill data removed successfully'}), 200
     except Exception as e:
+        traceback.print_exc()
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
