@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from flask import Blueprint, render_template
+from sqlalchemy import func
 
 from app.models import BasicInfo, Career, Education, Project, ProjectSkill, Skill
 
@@ -20,7 +21,7 @@ def main_page():
 
 @main_bp.route('/<first_name_eng>')
 def user_portfolio(first_name_eng):
-    user = BasicInfo.query.filter_by(first_name_eng=first_name_eng).first()
+    user = BasicInfo.query.filter(func.lower(BasicInfo.first_name_eng) == func.lower(first_name_eng)).first()
 
     if user:
         user_id = user.id  # 현재 사용자의 ID를 가져옵니다.
