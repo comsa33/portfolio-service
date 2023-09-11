@@ -1,5 +1,6 @@
+import traceback
+
 from flask import Blueprint, jsonify, request
-from sqlalchemy.orm import joinedload
 
 from app.models import BasicInfo, Career, Education, Project, ProjectSkill, Skill
 from app import db
@@ -221,7 +222,6 @@ def create_or_update_project():
         db.session.commit()
         return jsonify(new_project.to_dict()), 201
 
-import traceback
 
 @api.route('/project_skill', methods=['POST'])
 def add_project_skill():

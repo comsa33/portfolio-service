@@ -419,6 +419,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCareerDataintoForm();
     loadCareerData();
     loadProjectDataIntoForm();
+    loadSkillDataIntoForm();
 
     // 스킬을 프로젝트에 추가
     $("#add_skill_to_project").click(function() {
