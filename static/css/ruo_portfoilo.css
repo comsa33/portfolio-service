@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.basic-info h1 {
+    font-size: 36px;
+}
+
+.education-info h2,
+.skill-info h2,
+.career-info h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+.career-item h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.project-item h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}

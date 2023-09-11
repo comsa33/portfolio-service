@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이루오 포트폴리오</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ruo_portfolio.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Basic Info -->
+        <div class="basic-info">
+            <h1>{{ user.first_name_eng }} {{ user.last_name_eng }}</h1>
+            <!-- Other user fields... -->
+        </div>
+        
+        <!-- Education Info -->
+        <div class="education-info mt-5">
+            <h2>Education</h2>
+            <ul>
+            {% for edu in educations %}
+                <li>{{ edu.school_name_eng }} - {{ edu.degree_eng }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Skill Info -->
+        <div class="skill-info mt-5">
+            <h2>Skills</h2>
+            <ul>
+            {% for skill in skills %}
+                <li>{{ skill.skill_name_eng }} - {{ skill.skill_level }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        
+        <!-- Career Info -->
+        <div class="career-info mt-5">
+            <h2>Careers</h2>
+            {% for career in careers %}
+                <div class="career-item">
+                    <h3>{{ career.company_name_eng }}</h3>
+                    <div class="projects">
+                        {% for project in career.projects %}
+                            <div class="project-item">
+                                <h4>{{ project.project_name_eng }}</h4>
+                                <!-- Other project fields... -->
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/ruo_portfolio.js') }}"></script>
+</body>
+</html>
