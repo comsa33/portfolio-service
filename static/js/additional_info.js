@@ -8,7 +8,7 @@ function loadCareerData() {
         // Null 옵션 추가
         const nullOption = document.createElement("option");
         nullOption.value = "";
-        nullOption.textContent = "선택 안 함";
+        nullOption.textContent = "개인 프로젝트";
         selectElement.appendChild(nullOption);
 
         data.forEach(career => {

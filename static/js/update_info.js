@@ -93,6 +93,31 @@ function populateSelectBoxes(data, type) {
     });
 }
 
+// 커리어 데이터를 불러와서 dropdown에 추가하는 함수
+function loadCareerData() {
+    fetch("/api/career")
+    .then(response => response.json())
+    .then(data => {
+        const selectElement = document.getElementById("career_id");
+        
+        // Null 옵션 추가
+        const nullOption = document.createElement("option");
+        nullOption.value = "";
+        nullOption.textContent = "개인 프로젝트";
+        selectElement.appendChild(nullOption);
+
+        data.forEach(career => {
+            const option = document.createElement("option");
+            option.value = career.id;
+            option.textContent = career.company_name_kor;
+            selectElement.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
+}
+
 function loadCareerDataintoForm() {
     // Load career details into the form when a career is selected
     document.getElementById("career_select").addEventListener("change", function() {
