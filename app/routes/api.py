@@ -74,7 +74,15 @@ def get_project():
 @api.route('/project/<int:project_id>/skills', methods=['GET'])
 def get_project_skills(project_id):
     project_skills = ProjectSkill.query.filter_by(project_id=project_id).all()
-    return jsonify([skill.to_dict() for skill in project_skills]), 200
+    # Skill 정보도 추가로 가져옴
+    skills_data = [
+        {
+            **skill.skill.to_dict(),  # Skill 모델의 to_dict 메소드를 사용
+            'project_skill_id': skill.id  # ProjectSkill의 id도 추가 (필요하다면)
+        }
+        for skill in project_skills
+    ]
+    return jsonify(skills_data), 200
 
 
 @api.route('/skill', methods=['GET'])
