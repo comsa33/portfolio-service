@@ -247,6 +247,7 @@ function updateCareer() {
 function updateProject() {
     // Update project details
     document.getElementById("update_project").addEventListener("click", function() {
+        event.preventDefault();
         const formData = {
             id: parseInt(document.getElementById("project_id").value), // To update an existing project
             basic_info_id: parseInt(document.getElementById("basic_info_id").value),
