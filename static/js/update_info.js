@@ -120,30 +120,37 @@ function loadCareerData() {
     });
 }
 
+let skillData = {};  // 모든 스킬 데이터 저장
+
 function fetchSkills(basicInfoId) {
     fetch(`/api/skill?basic_info_id=${basicInfoId}`)
     .then(response => response.json())
     .then(data => {
-        const selectElement = document.getElementById("skill_select");
+        populateSkillSelectBox(data);
+    });
+}
+
+function populateSkillSelectBox(data) {
+    const selectElement = document.getElementById("skill_select");
+    selectElement.innerHTML = "";
+    
+    skillData = {}; // 데이터 초기화
+    
+    // Null 옵션 추가
+    const nullOption = document.createElement("option");
+    nullOption.value = "";
+    nullOption.textContent = "선택하세요";
+    selectElement.appendChild(nullOption);
+
+    // 실제 데이터로부터 옵션 추가
+    data.forEach(skill => {
+        const option = document.createElement("option");
+        option.value = skill.id;
+        option.textContent = skill.skill_name_eng;
+        selectElement.appendChild(option);
         
-        // Clear previous options
-        selectElement.innerHTML = "";
-
-        // Null 옵션 추가
-        const nullOption = document.createElement("option");
-        nullOption.value = "";
-        nullOption.textContent = "선택하세요";
-        selectElement.appendChild(nullOption);
-
-        data.forEach(skill => {
-            const option = document.createElement("option");
-            option.value = skill.id;
-            option.textContent = skill.skill_name_eng; 
-            selectElement.appendChild(option);
-        });
-    })
-    .catch(error => {
-        console.error("An error occurred:", error);
+        // 스킬 데이터 저장
+        skillData[skill.id] = skill;
     });
 }
 
@@ -230,6 +237,34 @@ function loadProjectDataIntoForm() {
         loadSkills();
         // Load the skills for the project
         loadCurrentProjectSkills(projectId);
+    });
+}
+
+function loadSkillDataIntoForm() {
+    // Load skill details into the form when a skill is selected
+    document.getElementById("skill_select").addEventListener("change", function() {
+        const skillId = parseInt(this.value);
+
+        if (skillData.hasOwnProperty(skillId)) {
+            const selectedSkill = skillData[skillId];
+            // Populate the form fields
+            document.getElementById("skill_name_eng").value = selectedSkill.skill_name_eng;
+            document.getElementById("skill_name_kor").value = selectedSkill.skill_name_kor;
+            document.getElementById("skill_type_eng").value = selectedSkill.skill_type_eng;
+            document.getElementById("skill_type_kor").value = selectedSkill.skill_type_kor;
+
+            // Convert and format the start date field
+            const startDateObject = new Date(selectedSkill.start_date);
+            const formattedStartDate = startDateObject.toISOString().split('T')[0];
+            document.getElementById("skill_start_date").value = formattedStartDate;
+            
+            document.getElementById("skill_level").value = selectedSkill.skill_level;
+            document.getElementById("skill_level_output").textContent = selectedSkill.skill_level;
+            
+            document.getElementById("skill_description_eng").value = selectedSkill.description_eng;
+            document.getElementById("skill_description_kor").value = selectedSkill.description_kor;
+            document.getElementById("skill_image").value = selectedSkill.skill_image;
+        }
     });
 }
 
