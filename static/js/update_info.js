@@ -34,6 +34,9 @@ function loadCareersbyBasicInfoId() {
     basicInfoDropdown.addEventListener("change", function() {
         const basicInfoId = this.value;
         fetchCareers(basicInfoId);
+        // Show the career form
+        document.getElementById("career_form").style.display = "block";
+        document.getElementById("project_form").style.display = "block";
     });
 }
 
@@ -43,25 +46,37 @@ function fetchCareers(basicInfoId) {
     .then(response => response.json())
     .then(data => {
         careerData = {}; // 초기화
-        const careerSelect = document.getElementById("career_select");
-        careerSelect.innerHTML = "";
+        const careerSelects = [
+            document.getElementById("career_select"), 
+            document.getElementById("career_select_for_project")
+        ];
 
-        // Add a default option
-        const defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.textContent = "선택해주세요";
-        careerSelect.appendChild(defaultOption);
+        careerSelects.forEach(careerSelect => {
+            careerSelect.innerHTML = "";
 
-        data.forEach(career => {
-            const option = document.createElement("option");
-            option.value = career.id;
-            option.text = career.company_name_kor;
-            careerSelect.appendChild(option);
-            careerData[career.id] = career; // ID를 키로 하여 데이터 저장
+            // "선택해주세요" 옵션 추가
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "선택해주세요";
+            careerSelect.appendChild(defaultOption);
+
+            // "개인 프로젝트" 옵션 추가 (만약 career_select_for_project인 경우)
+            if (careerSelect.id === 'career_select_for_project') {
+                const personalProjectOption = document.createElement("option");
+                personalProjectOption.value = "personal";
+                personalProjectOption.textContent = "개인 프로젝트";
+                careerSelect.appendChild(personalProjectOption);
+            }
+
+            // 실제 커리어 데이터로부터 옵션 추가
+            data.forEach(career => {
+                const option = document.createElement("option");
+                option.value = career.id;
+                option.textContent = career.company_name_kor;
+                careerSelect.appendChild(option);
+                careerData[career.id] = career; // ID를 키로 하여 데이터 저장
+            });
         });
-
-        // Show the career form
-        document.getElementById("career_form").style.display = "block";
     });
 }
 
@@ -101,7 +116,7 @@ function loadCareerDataintoForm() {
 function updateCareer() {
     // Update career details
     document.getElementById("update_career").addEventListener("click", function() {
-        event.preventDefault(); 
+        // event.preventDefault(); 
         const formData = {
             id: parseInt(document.getElementById("career_select").value),  // Add this line if you want to update an existing career
             basic_info_id: parseInt(document.getElementById("basic_info_id").value),

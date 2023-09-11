@@ -19,17 +19,14 @@
 
         <hr>
         
+        <!-- Career Information -->
+        <h2>Career Info</h2>
         <div>
             <label for="career_select">Select Career (Company)</label>
             <select id="career_select" class="form-control">
                 <!-- Options filled dynamically via JavaScript -->
             </select>
         </div>
-
-        <hr>
-
-        <!-- Career Information -->
-        <h2>Career Info</h2>
         <form id="career_form" style="display:none;">
             <div class="form-group">
                 <label for="company_name_eng">Company Name (English)</label>
@@ -91,8 +88,120 @@
                 <textarea id="description_kor" name="description_kor" class="form-control"></textarea>
             </div>
         
-            <button type="submit" id="update_career" class="btn btn-primary">Career Update</button>
+            <button type="submit" id="update_career" class="btn btn-primary">Update Career</button>
         </form>
+
+        <h2>Project Info</h2>
+        <div>
+            <label for="career_select_for_project">Select Career</label>
+            <select id="career_select_for_project" class="form-control">
+                <!-- Options filled dynamically via JavaScript -->
+            </select>
+        </div>
+        <form id="project_form" style="display:none;">
+            <div class="form-group">
+                <label for="project_name_eng">Project Name (English)</label>
+                <input type="text" id="project_name_eng" name="project_name_eng" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_name_kor">Project Name (Korean)</label>
+                <input type="text" id="project_name_kor" name="project_name_kor" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_main_type_eng">Main Type (English)</label>
+                <input type="text" id="project_main_type_eng" name="project_main_type_eng" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_main_type_kor">Main Type (Korean)</label>
+                <input type="text" id="project_main_type_kor" name="project_main_type_kor" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_sub_type_eng">Sub Type (English)</label>
+                <input type="text" id="project_sub_type_eng" name="project_sub_type_eng" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_sub_type_kor">Sub Type (Korean)</label>
+                <input type="text" id="project_sub_type_kor" name="project_sub_type_kor" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="start_date_project">Start Date</label>
+                <input type="date" id="start_date_project" name="start_date_project" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="end_date_project">End Date</label>
+                <input type="date" id="end_date_project" name="end_date_project" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="no_of_team_members">Number of Team Members</label>
+                <input type="number" id="no_of_team_members" name="no_of_team_members" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="team_name_eng">Team Name (English)</label>
+                <input type="text" id="team_name_eng" name="team_name_eng" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="team_name_kor">Team Name (Korean)</label>
+                <input type="text" id="team_name_kor" name="team_name_kor" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="summary_eng">Summary (English)</label>
+                <textarea id="summary_eng" name="summary_eng" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="summary_kor">Summary (Korean)</label>
+                <textarea id="summary_kor" name="summary_kor" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="role_description_eng">Role Description (English)</label>
+                <textarea id="role_description_eng" name="role_description_eng" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="role_description_kor">Role Description (Korean)</label>
+                <textarea id="role_description_kor" name="role_description_kor" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="issue_description_eng">Issue Description (English)</label>
+                <textarea id="issue_description_eng" name="issue_description_eng" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="issue_description_kor">Issue Description (Korean)</label>
+                <textarea id="issue_description_kor" name="issue_description_kor" class="form-control"></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="project_link">Project Link</label>
+                <input type="url" id="project_link" name="project_link" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="code_link">Code Link</label>
+                <input type="url" id="code_link" name="code_link" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="project_image">Project Image</label>
+                <input type="text" id="project_image" name="project_image" class="form-control">
+            </div>
+        
+            <button type="submit" id="update_project" class="btn btn-primary">Update Project</button>
+        </form>
+        
 
     </div>
 
