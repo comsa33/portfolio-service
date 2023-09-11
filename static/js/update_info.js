@@ -157,7 +157,6 @@ function loadProjectDataIntoForm() {
         const projectId = parseInt(this.value);
 
         if (projectData.hasOwnProperty(projectId)) {
-            event.preventDefault();
             const selectedProject = projectData[projectId];
             // career_id를 설정합니다.
             const careerId = selectedProject.career_id;
@@ -198,6 +197,10 @@ function loadProjectDataIntoForm() {
             document.getElementById("code_link").value = selectedProject.code_link;
             document.getElementById("project_image").value = selectedProject.project_image;
         }
+
+        loadSkills();
+        // Load the skills for the project
+        loadCurrentProjectSkills(projectId);
     });
 }
 
@@ -295,12 +298,90 @@ function updateProject() {
     });
 }
 
+// 서버에서 스킬 목록을 불러와서 #project_skills에 추가
+function loadSkills() {
+    $.get("/api/skill", function(data) {
+        data.forEach(function(skill) {
+            const option = $("<option>").val(skill.id).text(skill.skill_name_eng);
+            $("#project_skills").append(option);
+        });
+    });
+}
+
+// 서버에서 프로젝트에 현재 연결된 스킬을 불러옴
+function loadCurrentProjectSkills(projectId) {
+    $.get(`/api/project/${projectId}/skills`, function(data) {
+        $("#current_project_skills").empty();
+        data.forEach(function(skill) {
+            const listItem = $("<li>").text(skill.skill_name_eng);
+            $("#current_project_skills").append(listItem);
+        });
+    });
+}
+
+function addSkillToProject(projectId, skillId) {
+    $.ajax({
+        url: '/api/project_skill',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ project_id: projectId, skill_ids: [skillId] }),
+        success: function(data) {
+            loadCurrentProjectSkills(projectId);
+        },
+        error: function(xhr, status, error) {
+            console.error(`Failed to add skill: ${error}`);
+        }
+    });
+}
+
+function removeSkillFromProject(projectId, skillId) {
+    $.ajax({
+        url: '/api/project_skill',
+        method: 'DELETE',
+        contentType: 'application/json',
+        data: JSON.stringify({ project_id: projectId, skill_ids: [skillId] }),
+        success: function(data) {
+            loadCurrentProjectSkills(projectId);
+        },
+        error: function(xhr, status, error) {
+            console.error(`Failed to remove skill: ${error}`);
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     loadBasicInfoData();
     loadCareersbyBasicInfoId();
     loadCareerDataintoForm();
     loadCareerData();
     loadProjectDataIntoForm();
+
+    // 스킬을 프로젝트에 추가
+    $("#add_skill_to_project").click(function() {
+        const projectId = parseInt($("#project_select").val());
+        const selectedSkillIds = $("#project_skills").val();
+
+        if (selectedSkillIds.length === 0 || isNaN(projectId)) {
+            alert("Please select a project and at least one skill to add.");
+            return;
+        }
+
+        addSkillToProject(projectId, selectedSkillIds);
+    });
+
+    // 스킬을 프로젝트에서 제거
+    $("#remove_skill_from_project").click(function() {
+        const projectId = parseInt($("#project_select").val());
+        const selectedSkillIds = $("#project_skills").val();
+
+        if (selectedSkillIds.length === 0 || isNaN(projectId)) {
+            alert("Please select a project and at least one skill to remove.");
+            return;
+        }
+
+        removeSkillFromProject(projectId, selectedSkillIds);
+    });
+
     updateCareer();
     updateProject();
 });

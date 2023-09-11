@@ -209,8 +209,32 @@
                 <input type="text" id="project_image" name="project_image" class="form-control">
             </div>
         
+            <!-- 기존의 프로젝트 양식 아래에 새로운 프로젝트-스킬 양식 추가 -->
+            <div class="form-group">
+                <label for="project_skills">Select Skills for the Project</label>
+                <select multiple class="form-control" id="project_skills">
+                    <!-- 옵션은 JavaScript로 동적으로 추가됩니다. -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="button" id="add_skill_to_project" class="btn btn-secondary">Add Skill</button>
+                <button type="button" id="remove_skill_from_project" class="btn btn-secondary">Remove Skill</button>
+            </div>
+
+            <div class="form-group">
+                <label>Current Skills in the Project</label>
+                <ul id="current_project_skills">
+                    <!-- 현재 프로젝트에 연결된 스킬 목록은 JavaScript로 동적으로 추가됩니다. -->
+                </ul>
+            </div>
+
+            <!-- 기존의 'Update Project' 버튼 -->
             <button type="submit" id="update_project" class="btn btn-primary">Update Project</button>
         </form>
+        
+        <hr
+
         
 
     </div>

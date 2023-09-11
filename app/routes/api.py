@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from sqlalchemy.orm import joinedload
 
 from app.models import BasicInfo, Career, Education, Project, ProjectSkill, Skill
 from app import db
@@ -70,10 +71,16 @@ def get_project():
     return jsonify([project.to_dict() for project in projects]), 200
 
 
+@api.route('/project/<int:project_id>/skills', methods=['GET'])
+def get_project_skills(project_id):
+    project_skills = ProjectSkill.query.filter_by(project_id=project_id).all()
+    return jsonify([skill.to_dict() for skill in project_skills]), 200
+
+
 @api.route('/skill', methods=['GET'])
 def get_skills():
     skills = Skill.query.all()
-    return jsonify([skill.to_dict() for skill in skills])
+    return jsonify([skill.to_dict() for skill in skills]), 200
 
 
 @api.route('/basic_info', methods=['POST'])
@@ -209,6 +216,31 @@ def add_project_skill():
         db.session.commit()
 
         return jsonify({'message': 'ProjectSkill data saved successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+@api.route('/project_skill', methods=['DELETE'])
+def remove_project_skill():
+    data = request.json
+    project_id = data.get('project_id')
+    skill_ids = data.get('skill_ids', [])
+
+    if project_id is None:
+        return jsonify({'error': 'project_id is required'}), 400
+
+    try:
+        for skill_id in skill_ids:
+            project_skill = ProjectSkill.query.filter_by(project_id=project_id, skill_id=skill_id).first()
+            if project_skill:
+                db.session.delete(project_skill)
+            else:
+                return jsonify({'error': f'Skill with id {skill_id} not found for project {project_id}'}), 404
+
+        db.session.commit()
+
+        return jsonify({'message': 'ProjectSkill data removed successfully'}), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
