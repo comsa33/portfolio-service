@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ user.first_name_eng }} 포트폴리오</title>
+    <title>{{ full_user_info.user.first_name_eng }} 포트폴리오</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ruo_portfolio.css') }}">
 </head>
@@ -13,7 +13,7 @@
 
         <!-- Basic Info -->
         <div class="basic-info">
-            <h1 id="fullName">{{ user.first_name_eng }} {{ user.last_name_eng }}</h1>
+            <h1 id="fullName">{{ full_user_info.user.first_name_eng }} {{ full_user_info.user.last_name_eng }}</h1>
             <!-- Other user fields... -->
         </div>
 
@@ -21,7 +21,7 @@
         <div class="education-info mt-5">
             <h2 id="educationTitle">Education</h2>
             <ul id="educationList">
-            {% for edu in educations %}
+            {% for edu in full_user_info.educations %}
                 <li data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }}" data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}">
                     {{ edu.school_name_eng }} - {{ edu.degree_eng }}
                 </li>
@@ -33,7 +33,7 @@
         <div class="skill-info mt-5">
             <h2 id="skillTitle">Skills</h2>
             <ul id="skillList">
-            {% for skill in skills %}
+            {% for skill in full_user_info.skills %}
                 <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
                     {{ skill.skill_name_eng }} - {{ skill.skill_level }}
                 </li>
@@ -45,7 +45,7 @@
         <div class="career-info mt-5">
             <h2 id="careerTitle">Careers</h2>
             <div id="careerList">
-            {% for career in careers %}
+            {% for career in full_user_info.careers %}
                 <div class="career-item" data-eng="{{ career.company_name_eng }}" data-kor="{{ career.company_name_kor }}">
                     <h3>{{ career.company_name_eng }}</h3>
                     <div class="projects">

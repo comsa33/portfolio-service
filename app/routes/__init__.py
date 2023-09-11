@@ -26,6 +26,7 @@ def user_portfolio(first_name_eng):
     if user:
         user_id = user.id  # 현재 사용자의 ID를 가져옵니다.
         educations = Education.query.filter_by(basic_info_id=user_id).all()
+        all_skills = Skill.query.filter_by(basic_info_id=user_id).all()
 
         # 경력 정보와 관련된 프로젝트 및 스킬 정보를 가져옵니다.
         careers = Career.query.filter_by(basic_info_id=user_id).all()
@@ -48,6 +49,7 @@ def user_portfolio(first_name_eng):
         full_user_info = {
             'user': user.to_dict(),
             'educations': [education.to_dict() for education in educations],
+            'skills': [skill.to_dict() for skill in all_skills],
             'careers': careers_info,
         }
 
