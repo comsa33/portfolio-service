@@ -241,6 +241,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCareersbyBasicInfoId();
     loadCareerDataintoForm();
     loadCareerData();
+    loadProjectDataIntoForm();
     updateCareer();
 
 });
