@@ -7,6 +7,13 @@ function loadBasicInfoData() {
         
         dropdownIds.forEach((dropdownId) => {
             const basicInfoDropdown = document.getElementById(dropdownId);
+            
+            // Add a default option
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "선택해주세요";
+            basicInfoDropdown.appendChild(defaultOption);
+            
             data.forEach(basicInfo => {
                 const option = document.createElement("option");
                 option.value = basicInfo.id;
@@ -119,12 +126,7 @@ function updateCareer() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    loadBasicInfoData().then(() => {
-        const initialBasicInfoId = parseInt(document.getElementById("basic_info_id").value);
-        if (initialBasicInfoId) {
-          fetchCareers(initialBasicInfoId);
-        }
-      });
+    loadBasicInfoData();
     loadCareersbyBasicInfoId();
     loadCareerDataintoForm();
     updateCareer();
