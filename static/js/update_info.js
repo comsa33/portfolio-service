@@ -81,8 +81,17 @@ function loadCareerDataintoForm() {
             document.getElementById("department_kor").value = selectedCareer.department_kor;
             document.getElementById("position_eng").value = selectedCareer.position_eng;
             document.getElementById("position_kor").value = selectedCareer.position_kor;
-            document.getElementById("start_date").value = selectedCareer.start_date;
-            document.getElementById("end_date").value = selectedCareer.end_date;
+
+            // Convert and format the date fields
+            const startDateObject = new Date(selectedCareer.start_date);
+            const formattedStartDate = startDateObject.toISOString().split('T')[0];
+
+            const endDateObject = new Date(selectedCareer.end_date);
+            const formattedEndDate = endDateObject.toISOString().split('T')[0];
+
+            document.getElementById("start_date").value = formattedStartDate;
+            document.getElementById("end_date").value = formattedEndDate;
+            
             document.getElementById("description_eng").value = selectedCareer.description_eng;
             document.getElementById("description_kor").value = selectedCareer.description_kor;
         }
@@ -92,13 +101,6 @@ function loadCareerDataintoForm() {
 function updateCareer() {
     // Update career details
     document.getElementById("update_career").addEventListener("click", function() {
-        // Convert and format the date fields
-        const startDateObject = new Date(document.getElementById("start_date").value);
-        const formattedStartDate = startDateObject.toISOString().split('T')[0];
-
-        const endDateObject = new Date(document.getElementById("end_date").value);
-        const formattedEndDate = endDateObject.toISOString().split('T')[0];
-
         const formData = {
             id: parseInt(document.getElementById("career_select").value),  // Add this line if you want to update an existing career
             basic_info_id: parseInt(document.getElementById("basic_info_id").value),
@@ -110,8 +112,8 @@ function updateCareer() {
             department_kor: document.getElementById("department_kor").value,
             position_eng: document.getElementById("position_eng").value,
             position_kor: document.getElementById("position_kor").value,
-            start_date: formattedStartDate,  // use formatted start date
-            end_date: formattedEndDate,  // use formatted end date
+            start_date: document.getElementById("start_date").value,
+            end_date: document.getElementById("end_date").value,
             description_eng: document.getElementById("description_eng").value,
             description_kor: document.getElementById("description_kor").value,
         };
