@@ -42,6 +42,34 @@ def get_career():
     return jsonify([career.to_dict() for career in careers]), 200
 
 
+@api.route('/project', methods=['GET'])
+def get_project():
+    # URL query parameter에서 basic_info_id 가져오기
+    basic_info_id = request.args.get('basic_info_id')
+
+    # basic_info_id가 제공되지 않은 경우, 모든 Project 데이터를 가져옴
+    if not basic_info_id:
+        projects = Project.query.all()
+
+    # basic_info_id가 제공된 경우
+    else:
+        # basic_info_id가 정수인지 확인
+        try:
+            basic_info_id = int(basic_info_id)
+        except ValueError:
+            return jsonify({"error": "Invalid basic_info_id"}), 400
+
+        # 특정 basic_info_id와 일치하는 Project 데이터를 가져옴
+        projects = Project.query.filter_by(basic_info_id=basic_info_id).all()
+
+    # 일치하는 데이터가 없을 경우 에러 반환
+    if not projects:
+        return jsonify({"error": "No projects found for this basic_info_id"}), 404
+
+    # 일치하는 데이터가 있을 경우 JSON으로 반환
+    return jsonify([project.to_dict() for project in projects]), 200
+
+
 @api.route('/skill', methods=['GET'])
 def get_skills():
     skills = Skill.query.all()

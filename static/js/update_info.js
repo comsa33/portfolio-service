@@ -33,50 +33,61 @@ function loadCareersbyBasicInfoId() {
     // Load careers when a basic_info_id is selected
     basicInfoDropdown.addEventListener("change", function() {
         const basicInfoId = this.value;
-        fetchCareers(basicInfoId);
+        fetchCareersAndProjects(basicInfoId);
         // Show the career form
         document.getElementById("career_form").style.display = "block";
         document.getElementById("project_form").style.display = "block";
     });
 }
 
-let careerData = {}; // 이곳에 모든 커리어 데이터를 저장합니다.
-function fetchCareers(basicInfoId) {
+let careerData = {};  // 모든 커리어 데이터 저장
+let projectData = {}; // 모든 프로젝트 데이터 저장
+
+function fetchCareersAndProjects(basicInfoId) {
+    // 커리어 정보 불러오기
     fetch(`/api/career?basic_info_id=${basicInfoId}`)
     .then(response => response.json())
     .then(data => {
-        careerData = {}; // 초기화
-        const careerSelects = [
-            document.getElementById("career_select"), 
-            document.getElementById("career_select_for_project")
-        ];
+        populateSelectBoxes(data, "career");
+    });
 
-        careerSelects.forEach(careerSelect => {
-            careerSelect.innerHTML = "";
+    // 프로젝트 정보 불러오기
+    fetch(`/api/project?basic_info_id=${basicInfoId}`)
+    .then(response => response.json())
+    .then(data => {
+        populateSelectBoxes(data, "project");
+    });
+}
 
-            // "선택해주세요" 옵션 추가
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "선택해주세요";
-            careerSelect.appendChild(defaultOption);
+function populateSelectBoxes(data, type) {
+    let targetData = type === "career" ? careerData : projectData;
+    let selectElementId = type === "career" ? "career_select" : "project_select";
+    
+    targetData = {}; // 초기화
+    const selectElement = document.getElementById(selectElementId);
+    selectElement.innerHTML = "";
 
-            // "개인 프로젝트" 옵션 추가 (만약 career_select_for_project인 경우)
-            if (careerSelect.id === 'career_select_for_project') {
-                const personalProjectOption = document.createElement("option");
-                personalProjectOption.value = "personal";
-                personalProjectOption.textContent = "개인 프로젝트";
-                careerSelect.appendChild(personalProjectOption);
-            }
+    // Add a default option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "선택해주세요";
+    selectElement.appendChild(defaultOption);
 
-            // 실제 커리어 데이터로부터 옵션 추가
-            data.forEach(career => {
-                const option = document.createElement("option");
-                option.value = career.id;
-                option.textContent = career.company_name_kor;
-                careerSelect.appendChild(option);
-                careerData[career.id] = career; // ID를 키로 하여 데이터 저장
-            });
-        });
+    if (type === "career") {
+        // 개인 프로젝트 옵션 추가
+        const personalProjectOption = document.createElement("option");
+        personalProjectOption.value = "personal";
+        personalProjectOption.textContent = "개인 프로젝트";
+        selectElement.appendChild(personalProjectOption);
+    }
+
+    // 실제 데이터로부터 옵션 추가
+    data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = type === "career" ? item.company_name_kor : item.project_name_kor;
+        selectElement.appendChild(option);
+        targetData[item.id] = item; // ID를 키로 하여 데이터 저장
     });
 }
 
