@@ -319,12 +319,12 @@ function loadCurrentProjectSkills(projectId) {
     });
 }
 
-function addSkillToProject(projectId, skillId) {
+function addSkillToProject(projectId, skillIds) {
     $.ajax({
         url: '/api/project_skill',
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ project_id: projectId, skill_ids: [skillId] }),
+        data: JSON.stringify({ project_id: projectId, skill_ids: skillIds }),
         success: function(data) {
             loadCurrentProjectSkills(projectId);
         },
@@ -334,12 +334,12 @@ function addSkillToProject(projectId, skillId) {
     });
 }
 
-function removeSkillFromProject(projectId, skillId) {
+function removeSkillFromProject(projectId, skillIds) {
     $.ajax({
         url: '/api/project_skill',
         method: 'DELETE',
         contentType: 'application/json',
-        data: JSON.stringify({ project_id: projectId, skill_ids: [skillId] }),
+        data: JSON.stringify({ project_id: projectId, skill_ids: skillIds }),
         success: function(data) {
             loadCurrentProjectSkills(projectId);
         },
