@@ -45,6 +45,13 @@ function fetchCareers(basicInfoId) {
         careerData = {}; // 초기화
         const careerSelect = document.getElementById("career_select");
         careerSelect.innerHTML = "";
+
+        // Add a default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "선택해주세요";
+        careerSelect.appendChild(defaultOption);
+
         data.forEach(career => {
             const option = document.createElement("option");
             option.value = career.id;
@@ -57,7 +64,6 @@ function fetchCareers(basicInfoId) {
         document.getElementById("career_form").style.display = "block";
     });
 }
-
 
 function loadCareerDataintoForm() {
     // Load career details into the form when a career is selected
