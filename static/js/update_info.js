@@ -249,7 +249,7 @@ function updateProject() {
     document.getElementById("update_project").addEventListener("click", function() {
         event.preventDefault();
         const formData = {
-            id: parseInt(document.getElementById("project_id").value), // To update an existing project
+            id: parseInt(document.getElementById("project_select").value), // To update an existing project
             basic_info_id: parseInt(document.getElementById("basic_info_id").value),
             career_id: document.getElementById("career_id").value === "" ? null : parseInt(document.getElementById("career_id").value),
             project_name_eng: document.getElementById("project_name_eng").value,
