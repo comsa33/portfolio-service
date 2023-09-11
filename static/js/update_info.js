@@ -60,10 +60,8 @@ function fetchCareersAndProjects(basicInfoId) {
 }
 
 function populateSelectBoxes(data, type) {
-    let targetData = type === "career" ? careerData : projectData;
     let selectElementId = type === "career" ? "career_select" : "project_select";
     
-    // Initialize the actual careerData or projectData
     if (type === "career") {
         careerData = {};
     } else {
@@ -85,7 +83,13 @@ function populateSelectBoxes(data, type) {
         option.value = item.id;
         option.textContent = type === "career" ? item.company_name_kor : item.project_name_kor;
         selectElement.appendChild(option);
-        targetData[item.id] = item; // ID를 키로 하여 데이터 저장
+        
+        // Update the actual data storage
+        if (type === "career") {
+            careerData[item.id] = item;
+        } else {
+            projectData[item.id] = item;
+        }
     });
 }
 
