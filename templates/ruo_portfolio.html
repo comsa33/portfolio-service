@@ -20,14 +20,18 @@
             <h2 id="jobTitle" data-eng="{{ info.user.job_title_eng }}" data-kor="{{ info.user.job_title_kor }}">
                 {{ info.user.job_title_eng }}
             </h2>
-            <h6 id="email">
-                {{ info.user.email }}
+            <h6 id="email" data-eng="Email: " data-kor="이메일: ">
+                Email: <a href="mailto:{{ info.user.email }}">
+                    {{ info.user.email }}
+                </a>
             </h6>
-            <h6 id="phone">
-                {{ info.user.phone }}
+            <h6 id="phone" data-eng="Phone: {{ info.user.phone }}" data-kor="전화번호: {{ info.user.phone }}">
+                Phone: {{ info.user.phone }}
             </h6>
-            <h6 id="github">
-                {{ info.user.github }}
+            <h6 id="github" data-eng="Github: " data-kor="깃헙: ">
+                Github: <a href="{{ info.user.github }}">
+                    {{ info.user.github }}
+                </a>
             </h6>
             <h6 id="linkedin">
                 {{ info.user.linkedin }}
