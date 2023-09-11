@@ -19,13 +19,18 @@
 
         <hr>
         
+        <div>
+            <label for="career_select">Select Career (Company)</label>
+            <select id="career_select" class="form-control">
+                <!-- Options filled dynamically via JavaScript -->
+            </select>
+        </div>
+
+        <hr>
+
+        <!-- Career Information -->
+        <h2>Career Info</h2>
         <form id="career_form" style="display:none;">
-            <div class="form-group">
-                <label for="career_select">Select Career (Company)</label>
-                <select id="career_select" class="form-control">
-                    <!-- Options filled dynamically via JavaScript -->
-                </select>
-            </div>
             <div class="form-group">
                 <label for="company_name_eng">Company Name (English)</label>
                 <input type="text" id="company_name_eng" name="company_name_eng" class="form-control">
@@ -86,7 +91,7 @@
                 <textarea id="description_kor" name="description_kor" class="form-control"></textarea>
             </div>
         
-            <button type="submit" id="update_career" class="btn btn-primary">Update</button>
+            <button type="submit" id="update_career" class="btn btn-primary">Career Update</button>
         </form>
     </div>
 

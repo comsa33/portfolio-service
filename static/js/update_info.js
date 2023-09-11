@@ -101,6 +101,7 @@ function loadCareerDataintoForm() {
 function updateCareer() {
     // Update career details
     document.getElementById("update_career").addEventListener("click", function() {
+        event.preventDefault(); 
         const formData = {
             id: parseInt(document.getElementById("career_select").value),  // Add this line if you want to update an existing career
             basic_info_id: parseInt(document.getElementById("basic_info_id").value),
