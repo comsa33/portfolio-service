@@ -301,5 +301,5 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCareerData();
     loadProjectDataIntoForm();
     updateCareer();
-
+    updateProject();
 });
