@@ -136,39 +136,57 @@ def create_or_update_career():
 
 
 @api.route('/project', methods=['POST'])
-def create_project():
+def create_or_update_project():
     data = request.get_json()
-    career_id = data.get('career_id')
-    if career_id == "":
-        career_id = None
+    project_id = data.get('id', None)
 
-    new_project = Project(
-        basic_info_id=data['basic_info_id'],
-        career_id=career_id,
-        project_name_eng=data['project_name_eng'],
-        project_name_kor=data['project_name_kor'],
-        project_main_type_eng=data['project_main_type_eng'],
-        project_main_type_kor=data['project_main_type_kor'],
-        project_sub_type_eng=data['project_sub_type_eng'],
-        project_sub_type_kor=data['project_sub_type_kor'],
-        start_date=data['start_date'],
-        end_date=data['end_date'],
-        no_of_team_members=data['no_of_team_members'],
-        team_name_eng=data['team_name_eng'],
-        team_name_kor=data['team_name_kor'],
-        summary_eng=data['summary_eng'],
-        summary_kor=data['summary_kor'],
-        role_description_eng=data['role_description_eng'],
-        role_description_kor=data['role_description_kor'],
-        issue_description_eng=data['issue_description_eng'],
-        issue_description_kor=data['issue_description_kor'],
-        project_link=data['project_link'],
-        code_link=data['code_link'],
-        project_image=data['project_image']
-    )
-    db.session.add(new_project)
-    db.session.commit()
-    return jsonify(new_project.to_dict()), 201
+    if project_id:
+        # Update existing project
+        project = Project.query.get(project_id)
+        if not project:
+            return jsonify({"error": "Project not found"}), 404
+
+        for key, value in data.items():
+            if value == "":
+                value = None
+            setattr(project, key, value)
+
+        db.session.commit()
+        return jsonify(project.to_dict()), 200
+
+    else:
+        # Create new project
+        career_id = data.get('career_id')
+        if career_id == "":
+            career_id = None
+
+        new_project = Project(
+            basic_info_id=data['basic_info_id'],
+            career_id=career_id,
+            project_name_eng=data['project_name_eng'],
+            project_name_kor=data['project_name_kor'],
+            project_main_type_eng=data['project_main_type_eng'],
+            project_main_type_kor=data['project_main_type_kor'],
+            project_sub_type_eng=data['project_sub_type_eng'],
+            project_sub_type_kor=data['project_sub_type_kor'],
+            start_date=data['start_date'],
+            end_date=data['end_date'],
+            no_of_team_members=data['no_of_team_members'],
+            team_name_eng=data['team_name_eng'],
+            team_name_kor=data['team_name_kor'],
+            summary_eng=data['summary_eng'],
+            summary_kor=data['summary_kor'],
+            role_description_eng=data['role_description_eng'],
+            role_description_kor=data['role_description_kor'],
+            issue_description_eng=data['issue_description_eng'],
+            issue_description_kor=data['issue_description_kor'],
+            project_link=data['project_link'],
+            code_link=data['code_link'],
+            project_image=data['project_image']
+        )
+        db.session.add(new_project)
+        db.session.commit()
+        return jsonify(new_project.to_dict()), 201
 
 
 @api.route('/project_skill', methods=['POST'])

@@ -244,6 +244,56 @@ function updateCareer() {
     });
 }
 
+function updateProject() {
+    // Update project details
+    document.getElementById("update_project").addEventListener("click", function() {
+        const formData = {
+            id: parseInt(document.getElementById("project_id").value), // To update an existing project
+            basic_info_id: parseInt(document.getElementById("basic_info_id").value),
+            career_id: document.getElementById("career_id").value === "" ? null : parseInt(document.getElementById("career_id").value),
+            project_name_eng: document.getElementById("project_name_eng").value,
+            project_name_kor: document.getElementById("project_name_kor").value,
+            project_main_type_eng: document.getElementById("project_main_type_eng").value,
+            project_main_type_kor: document.getElementById("project_main_type_kor").value,
+            project_sub_type_eng: document.getElementById("project_sub_type_eng").value,
+            project_sub_type_kor: document.getElementById("project_sub_type_kor").value,
+            start_date: document.getElementById("start_date").value,
+            end_date: document.getElementById("end_date").value,
+            no_of_team_members: parseInt(document.getElementById("no_of_team_members").value),
+            team_name_eng: document.getElementById("team_name_eng").value,
+            team_name_kor: document.getElementById("team_name_kor").value,
+            summary_eng: document.getElementById("summary_eng").value,
+            summary_kor: document.getElementById("summary_kor").value,
+            role_description_eng: document.getElementById("role_description_eng").value,
+            role_description_kor: document.getElementById("role_description_kor").value,
+            issue_description_eng: document.getElementById("issue_description_eng").value,
+            issue_description_kor: document.getElementById("issue_description_kor").value,
+            project_link: document.getElementById("project_link").value,
+            code_link: document.getElementById("code_link").value,
+            project_image: document.getElementById("project_image").value
+        };
+
+        // Make an AJAX request to update the data
+        $.ajax({
+            url: '/api/project',  // your API endpoint for project
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                // Handle success (e.g., show a success message, reload the project list, etc.)
+                alert('Project successfully updated.');
+                console.log('Project successfully updated.');
+            },
+            error: function(response) {
+                // Handle error (e.g., show an error message)
+                const serverMessage = response.responseJSON ? response.responseJSON.error : 'An error occurred.';
+                alert('Failed to update project: ' + serverMessage);
+                console.error('Server Error:', serverMessage);
+            }
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     loadBasicInfoData();
     loadCareersbyBasicInfoId();
