@@ -9,3 +9,6 @@ select.form-control {
     padding-right: 30px; /* Add padding to not overlap the text and background image */
 }
 
+#career_select, #basic_info_id, #project_select, #skill_select, #education_select{
+    background-color: #f0f0f0;
+}

@@ -11,7 +11,7 @@ function loadBasicInfoData() {
             // Add a default option
             const defaultOption = document.createElement("option");
             defaultOption.value = "";
-            defaultOption.textContent = "선택해주세요";
+            defaultOption.textContent = "프로필을 먼저 선택해주세요";
             basicInfoDropdown.appendChild(defaultOption);
             
             data.forEach(basicInfo => {
@@ -78,7 +78,11 @@ function populateSelectBoxes(data, type) {
     // Add a default option
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
-    defaultOption.textContent = "선택해주세요";
+    if (type === "career") {
+        defaultOption.textContent = "경력 정보를 선택해주세요";
+    } else {
+        defaultOption.textContent = "프로젝트를 선택해주세요";
+    }
     selectElement.appendChild(defaultOption);
 
     // 실제 데이터로부터 옵션 추가
@@ -141,7 +145,7 @@ function populateSkillSelectBox(data) {
     // Null 옵션 추가
     const nullOption = document.createElement("option");
     nullOption.value = "";
-    nullOption.textContent = "선택하세요";
+    nullOption.textContent = "기술 스택을 선택하세요";
     selectElement.appendChild(nullOption);
 
     // 실제 데이터로부터 옵션 추가
@@ -175,7 +179,7 @@ function populateEducationSelectBox(data) {
     // Null 옵션 추가
     const nullOption = document.createElement("option");
     nullOption.value = "";
-    nullOption.textContent = "선택하세요";
+    nullOption.textContent = "학력 정보를 선택하세요";
     selectElement.appendChild(nullOption);
 
     // 실제 데이터로부터 옵션 추가
