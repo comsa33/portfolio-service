@@ -16,7 +16,29 @@ def get_basic_info():
 
 @api.route('/career', methods=['GET'])
 def get_career():
-    careers = Career.query.all()
+    # URL query parameter에서 basic_info_id 가져오기
+    basic_info_id = request.args.get('basic_info_id')
+
+    # basic_info_id가 제공되지 않은 경우, 모든 Career 데이터를 가져옴
+    if not basic_info_id:
+        careers = Career.query.all()
+
+    # basic_info_id가 제공된 경우
+    else:
+        # basic_info_id가 정수인지 확인
+        try:
+            basic_info_id = int(basic_info_id)
+        except ValueError:
+            return jsonify({"error": "Invalid basic_info_id"}), 400
+
+        # 특정 basic_info_id와 일치하는 Career 데이터를 가져옴
+        careers = Career.query.filter_by(basic_info_id=basic_info_id).all()
+
+    # 일치하는 데이터가 없을 경우 에러 반환
+    if not careers:
+        return jsonify({"error": "No careers found for this basic_info_id"}), 404
+
+    # 일치하는 데이터가 있을 경우 JSON으로 반환
     return jsonify([career.to_dict() for career in careers]), 200
 
 
@@ -49,26 +71,40 @@ def update_basic_info():
 
 
 @api.route('/career', methods=['POST'])
-def create_career():
+def create_or_update_career():
     data = request.get_json()
-    new_career = Career(
-        basic_info_id=data['basic_info_id'],
-        company_name_eng=data['company_name_eng'],
-        company_name_kor=data['company_name_kor'],
-        company_type_eng=data['company_type_eng'],
-        company_type_kor=data['company_type_kor'],
-        department_eng=data['department_eng'],
-        department_kor=data['department_kor'],
-        position_eng=data['position_eng'],
-        position_kor=data['position_kor'],
-        start_date=data['start_date'],
-        end_date=data['end_date'],
-        description_eng=data['description_eng'],
-        description_kor=data['description_kor']
-    )
-    db.session.add(new_career)
-    db.session.commit()
-    return jsonify(new_career.to_dict()), 201
+
+    career_id = data.get('id', None)
+
+    if career_id:
+        # Update existing career
+        career = Career.query.get(career_id)
+        if not career:
+            return jsonify({"error": "Career not found"}), 404
+        for key, value in data.items():
+            setattr(career, key, value)
+        db.session.commit()
+        return jsonify(career.to_dict()), 200
+    else:
+        # Create new career
+        new_career = Career(
+            basic_info_id=data['basic_info_id'],
+            company_name_eng=data['company_name_eng'],
+            company_name_kor=data['company_name_kor'],
+            company_type_eng=data['company_type_eng'],
+            company_type_kor=data['company_type_kor'],
+            department_eng=data['department_eng'],
+            department_kor=data['department_kor'],
+            position_eng=data['position_eng'],
+            position_kor=data['position_kor'],
+            start_date=data['start_date'],
+            end_date=data['end_date'],
+            description_eng=data['description_eng'],
+            description_kor=data['description_kor']
+        )
+        db.session.add(new_career)
+        db.session.commit()
+        return jsonify(new_career.to_dict()), 201
 
 
 @api.route('/project', methods=['POST'])

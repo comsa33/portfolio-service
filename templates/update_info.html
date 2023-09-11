@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Additional Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div>
+        <label for="basic_info_id">Basic Info ID</label>
+        <select id="basic_info_id">
+            <!-- Options filled dynamically via JavaScript -->
+        </select>
+    </div>
+        
+
+    <div>
+        <label for="career_select">Select Career (Company)</label>
+        <select id="career_select">
+            <!-- Options filled dynamically via JavaScript -->
+        </select>
+    </div>
+    
+    <div id="career_form" style="display:none;">
+        <label for="company_name_eng">Company Name (English)</label>
+        <input type="text" id="company_name_eng" name="company_name_eng">
+    
+        <label for="company_name_kor">Company Name (Korean)</label>
+        <input type="text" id="company_name_kor" name="company_name_kor">
+    
+        <label for="company_type_eng">Company Type (English)</label>
+        <input type="text" id="company_type_eng" name="company_type_eng">
+    
+        <label for="company_type_kor">Company Type (Korean)</label>
+        <input type="text" id="company_type_kor" name="company_type_kor">
+    
+        <label for="department_eng">Department (English)</label>
+        <input type="text" id="department_eng" name="department_eng">
+    
+        <label for="department_kor">Department (Korean)</label>
+        <input type="text" id="department_kor" name="department_kor">
+    
+        <label for="position_eng">Position (English)</label>
+        <input type="text" id="position_eng" name="position_eng">
+    
+        <label for="position_kor">Position (Korean)</label>
+        <input type="text" id="position_kor" name="position_kor">
+    
+        <label for="start_date">Start Date</label>
+        <input type="date" id="start_date" name="start_date">
+    
+        <label for="end_date">End Date</label>
+        <input type="date" id="end_date" name="end_date">
+    
+        <label for="description_eng">Description (English)</label>
+        <textarea id="description_eng" name="description_eng"></textarea>
+    
+        <label for="description_kor">Description (Korean)</label>
+        <textarea id="description_kor" name="description_kor"></textarea>
+    
+        <button id="update_career">Update</button>
+    </div>
+    
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/update_info.js') }}"></script>
+
+</body>
+</html>
