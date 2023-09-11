@@ -32,6 +32,14 @@ def user_portfolio(first_name_eng):
         careers = Career.query.filter_by(basic_info_id=user_id).all()
         careers_info = []
 
+        personal_project_info = []
+        projects_without_career = Project.query.filter_by(career_id=None).all()
+        for project in projects_without_career:
+            project_dict = project.to_dict()
+            skills = Skill.query.join(ProjectSkill).filter(ProjectSkill.project_id == project.id).all()
+            project_dict["skills"] = [skill.to_dict() for skill in skills]
+            personal_project_info.append(project_dict)
+
         for career in careers:
             career_dict = career.to_dict()
             projects = Project.query.filter_by(career_id=career.id).all()
@@ -51,6 +59,7 @@ def user_portfolio(first_name_eng):
             'educations': [education.to_dict() for education in educations],
             'skills': [skill.to_dict() for skill in all_skills],
             'careers': careers_info,
+            'personal_projects': personal_project_info,
         }
 
         return render_template(f'{first_name_eng}_portfolio.html', info=full_user_info)
