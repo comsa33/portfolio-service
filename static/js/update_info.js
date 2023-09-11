@@ -160,9 +160,13 @@ function loadProjectDataIntoForm() {
             event.preventDefault();
             const selectedProject = projectData[projectId];
             // career_id를 설정합니다.
-            const careerId = selectedProject.career_id || null;  // null 체크를 추가
-            document.getElementById("career_id").value = careerId;
-            
+            const careerId = selectedProject.career_id;
+            if (careerId === null || careerId === undefined) {
+                document.getElementById("career_id").value = ''; // 빈 문자열로 설정
+            } else {
+                document.getElementById("career_id").value = careerId;
+            }
+
             // Populate the form fields
             document.getElementById("project_name_eng").value = selectedProject.project_name_eng;
             document.getElementById("project_name_kor").value = selectedProject.project_name_kor;
