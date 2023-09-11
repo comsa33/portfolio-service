@@ -33,11 +33,13 @@
                     {{ info.user.github }}
                 </a>
             </h6>
-            <h6 id="linkedin">
-                {{ info.user.linkedin }}
+            <h6 id="linkedin" data-eng="Linkedin: " data-kor="링크드인: ">
+                Linkedin: <a href="{{ info.user.linkedin }}">
+                    {{ info.user.linkedin }}
+                </a>
             </h6>
-            <h6 id="address" data-eng="{{ info.user.address_eng }}" data-kor="{{ info.user.address_kor }}">
-                {{ info.user.address_eng }}
+            <h6 id="address" data-eng="Address: {{ info.user.address_eng }}" data-kor="주소: {{ info.user.address_kor }}">
+                Address: {{ info.user.address_eng }}
             </h6>
             <hr>
             <p id="introduction" data-eng="{{ info.user.introduction_eng }}" data-kor="{{ info.user.introduction_kor }}">
