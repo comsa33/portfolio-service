@@ -13,17 +13,44 @@
 
         <!-- Basic Info -->
         <div class="basic-info">
-            <h1 id="fullName">{{ info.user.first_name_eng }} {{ info.user.last_name_eng }}</h1>
+            <h1 id="fullName" data-eng="{{ info.user.first_name_eng }} {{ info.user.last_name_eng }}" data-kor="{{ info.user.first_name_kor }} {{ info.user.last_name_kor }}">
+                {{ info.user.first_name_eng }} {{ info.user.last_name_eng }}
+            </h1>
+            <hr>
+            <h2 id="jobTitle" data-eng="{{ info.user.job_title_eng }}" data-kor="{{ info.user.job_title_kor }}">
+                {{ info.user.job_title_eng }}
+            </h2>
+            <h6 id="email">
+                {{ info.user.email }}
+            </h6>
+            <h6 id="phone">
+                {{ info.user.phone }}
+            </h6>
+            <h6 id="github">
+                {{ info.user.github }}
+            </h6>
+            <h6 id="linkedin">
+                {{ info.user.linkedin }}
+            </h6>
+            <h3 id="address" data-eng="{{ info.user.address_eng }}" data-kor="{{ info.user.address_kor }}">
+                {{ info.user.address_eng }}
+            </h3>
+            <p id="introduction" data-eng="{{ info.user.introduction_eng }}" data-kor="{{ info.user.introduction_kor }}">
+                {{ info.user.introduction_eng }}
+            </p>
             <!-- Other user fields... -->
         </div>
 
         <!-- Education Info -->
         <div class="education-info mt-5">
-            <h2 id="educationTitle">Education</h2>
+            <h2 id="educationTitle" data-eng="Education" data-kor="교육">
+                Education
+            </h2>
+            <hr>
             <ul id="educationList">
             {% for edu in info.educations %}
-                <li data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }}" data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}">
-                    {{ edu.school_name_eng }} - {{ edu.degree_eng }}
+                <li data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }} " data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
+                    {{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}
                 </li>
             {% endfor %}
             </ul>
@@ -31,7 +58,8 @@
 
         <!-- Skill Info -->
         <div class="skill-info mt-5">
-            <h2 id="skillTitle">Skills</h2>
+            <h2 id="skillTitle" data-eng="Skills" data-kor="기술스택">Skills</h2>
+            <hr>
             <ul id="skillList">
             {% for skill in info.skills %}
                 <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
@@ -43,15 +71,20 @@
 
         <!-- Career Info -->
         <div class="career-info mt-5">
-            <h2 id="careerTitle">Careers</h2>
+            <h2 id="careerTitle" data-eng="Projects" data-kor="프로젝트">Projects</h2>
+            <hr>
             <div id="careerList">
             {% for career in info.careers %}
-                <div class="career-item" data-eng="{{ career.company_name_eng }}" data-kor="{{ career.company_name_kor }}">
-                    <h3>{{ career.company_name_eng }}</h3>
+                <div class="career-item">
+                    <h3 data-eng="{{ career.company_name_eng }}" data-kor="{{ career.company_name_kor }}">
+                        {{ career.company_name_eng }}
+                    </h3>
                     <div class="projects">
                         {% for project in career.projects %}
-                            <div class="project-item" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
-                                <h4>{{ project.project_name_eng }}</h4>
+                            <div class="project-item">
+                                <h4 data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
+                                    {{ project.project_name_eng }}
+                                </h4>
                                 <!-- Other project fields... -->
                             </div>
                         {% endfor %}

@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle text for all elements
         toggleText('#fullName', 'data-eng', 'data-kor');
+        toggleText('#jobTitle', 'data-eng', 'data-kor');
+        toggleText('#address', 'data-eng', 'data-kor');
+        toggleText('#introduction', 'data-eng', 'data-kor');
         toggleText('#educationTitle', 'data-eng', 'data-kor');
         toggleText('#educationList li', 'data-eng', 'data-kor');
         toggleText('#skillTitle', 'data-eng', 'data-kor');
