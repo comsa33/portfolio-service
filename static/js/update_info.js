@@ -151,6 +151,48 @@ function loadCareerDataintoForm() {
     });
 }
 
+function loadProjectDataIntoForm() {
+    // Load project details into the form when a project is selected
+    document.getElementById("project_select").addEventListener("change", function() {
+        const projectId = parseInt(this.value);
+
+        if (projectData.hasOwnProperty(projectId)) {
+            event.preventDefault();
+            const selectedProject = projectData[projectId];
+            // Populate the form fields
+            document.getElementById("project_name_eng").value = selectedProject.project_name_eng;
+            document.getElementById("project_name_kor").value = selectedProject.project_name_kor;
+            document.getElementById("project_main_type_eng").value = selectedProject.project_main_type_eng;
+            document.getElementById("project_main_type_kor").value = selectedProject.project_main_type_kor;
+            document.getElementById("project_sub_type_eng").value = selectedProject.project_sub_type_eng;
+            document.getElementById("project_sub_type_kor").value = selectedProject.project_sub_type_kor;
+
+            // Convert and format the date fields
+            const startDateObject = new Date(selectedProject.start_date);
+            const formattedStartDate = startDateObject.toISOString().split('T')[0];
+
+            const endDateObject = new Date(selectedProject.end_date);
+            const formattedEndDate = endDateObject.toISOString().split('T')[0];
+
+            document.getElementById("start_date_project").value = formattedStartDate;
+            document.getElementById("end_date_project").value = formattedEndDate;
+
+            document.getElementById("no_of_team_members").value = selectedProject.no_of_team_members;
+            document.getElementById("team_name_eng").value = selectedProject.team_name_eng;
+            document.getElementById("team_name_kor").value = selectedProject.team_name_kor;
+            document.getElementById("summary_eng").value = selectedProject.summary_eng;
+            document.getElementById("summary_kor").value = selectedProject.summary_kor;
+            document.getElementById("role_description_eng").value = selectedProject.role_description_eng;
+            document.getElementById("role_description_kor").value = selectedProject.role_description_kor;
+            document.getElementById("issue_description_eng").value = selectedProject.issue_description_eng;
+            document.getElementById("issue_description_kor").value = selectedProject.issue_description_kor;
+            document.getElementById("project_link").value = selectedProject.project_link;
+            document.getElementById("code_link").value = selectedProject.code_link;
+            document.getElementById("project_image").value = selectedProject.project_image;
+        }
+    });
+}
+
 function updateCareer() {
     // Update career details
     document.getElementById("update_career").addEventListener("click", function() {
