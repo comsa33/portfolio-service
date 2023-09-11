@@ -110,6 +110,30 @@ def get_skills():
     return jsonify([skill.to_dict() for skill in skills]), 200
 
 
+@api.route('/education', methods=['GET'])
+def get_educations():
+    # URL query parameter에서 basic_info_id 가져오기
+    basic_info_id = request.args.get('basic_info_id')
+
+    # basic_info_id가 제공되지 않은 경우, 모든 Education 데이터를 가져옴
+    if not basic_info_id:
+        educations = Education.query.all()
+
+    # basic_info_id가 제공된 경우
+    else:
+        try:
+            basic_info_id = int(basic_info_id)
+        except ValueError:
+            return jsonify({"error": "Invalid basic_info_id"}), 400
+
+        educations = Education.query.filter_by(basic_info_id=basic_info_id).all()
+
+    if not educations:
+        return jsonify({"error": "No educations found for this basic_info_id"}), 404
+
+    return jsonify([education.to_dict() for education in educations]), 200
+
+
 @api.route('/basic_info', methods=['POST'])
 def update_basic_info():
     data = request.get_json()
@@ -311,22 +335,37 @@ def create_or_update_skill():
 
 
 @api.route('/education', methods=['POST'])
-def create_education():
+def create_or_update_education():
     data = request.get_json()
-    new_education = Education(
-        basic_info_id=data['basic_info_id'],
-        school_name_eng=data['school_name_eng'],
-        school_name_kor=data['school_name_kor'],
-        degree_eng=data['degree_eng'],
-        degree_kor=data['degree_kor'],
-        major_eng=data['major_eng'],
-        major_kor=data['major_kor'],
-        start_date=data['start_date'],
-        end_date=data['end_date'],
-        description_eng=data['description_eng'],
-        description_kor=data['description_kor'],
-        logo_image=data['logo_image']
-    )
-    db.session.add(new_education)
-    db.session.commit()
-    return jsonify(new_education.to_dict()), 201
+    education_id = data.get('id', None)
+
+    if education_id:
+        # Update existing education
+        education = Education.query.get(education_id)
+        if not education:
+            return jsonify({"error": "Education not found"}), 404
+
+        for key, value in data.items():
+            setattr(education, key, value)
+
+        db.session.commit()
+        return jsonify(education.to_dict()), 200
+    else:
+        # Create new education
+        new_education = Education(
+            basic_info_id=data['basic_info_id'],
+            school_name_eng=data['school_name_eng'],
+            school_name_kor=data['school_name_kor'],
+            degree_eng=data['degree_eng'],
+            degree_kor=data['degree_kor'],
+            major_eng=data['major_eng'],
+            major_kor=data['major_kor'],
+            start_date=data['start_date'],
+            end_date=data['end_date'],
+            description_eng=data['description_eng'],
+            description_kor=data['description_kor'],
+            logo_image=data['logo_image']
+        )
+        db.session.add(new_education)
+        db.session.commit()
+        return jsonify(new_education.to_dict()), 201

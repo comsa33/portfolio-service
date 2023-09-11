@@ -35,10 +35,12 @@ function loadCareersbyBasicInfoId() {
         const basicInfoId = this.value;
         fetchCareersAndProjects(basicInfoId);
         fetchSkills(basicInfoId);
+        fetchEducations(basicInfoId);
         // Show the career form
         document.getElementById("career_form").style.display = "block";
         document.getElementById("project_form").style.display = "block";
         document.getElementById("skill_form").style.display = "block";
+        document.getElementById("education_form").style.display = "block";
     });
 }
 
@@ -154,6 +156,40 @@ function populateSkillSelectBox(data) {
     });
 }
 
+let educationData = {};  // 모든 학력 데이터 저장
+
+function fetchEducations(basicInfoId) {
+    fetch(`/api/education?basic_info_id=${basicInfoId}`)
+    .then(response => response.json())
+    .then(data => {
+        populateEducationSelectBox(data);
+    });
+}
+
+function populateEducationSelectBox(data) {
+    const selectElement = document.getElementById("education_select");
+    selectElement.innerHTML = "";
+    
+    educationData = {}; // 데이터 초기화
+    
+    // Null 옵션 추가
+    const nullOption = document.createElement("option");
+    nullOption.value = "";
+    nullOption.textContent = "선택하세요";
+    selectElement.appendChild(nullOption);
+
+    // 실제 데이터로부터 옵션 추가
+    data.forEach(education => {
+        const option = document.createElement("option");
+        option.value = education.id;
+        option.textContent = education.school_name_kor;
+        selectElement.appendChild(option);
+        
+        // 학력 데이터 저장
+        educationData[education.id] = education;
+    });
+}
+
 function loadCareerDataintoForm() {
     // Load career details into the form when a career is selected
     document.getElementById("career_select").addEventListener("change", function() {
@@ -264,6 +300,38 @@ function loadSkillDataIntoForm() {
             document.getElementById("skill_description_eng").value = selectedSkill.description_eng;
             document.getElementById("skill_description_kor").value = selectedSkill.description_kor;
             document.getElementById("skill_image").value = selectedSkill.skill_image;
+        }
+    });
+}
+
+function loadEducationDataIntoForm() {
+    // Load education details into the form when an education is selected
+    document.getElementById("education_select").addEventListener("change", function() {
+        const educationId = parseInt(this.value);
+
+        if (educationData.hasOwnProperty(educationId)) {
+            const selectedEducation = educationData[educationId];
+            
+            // Populate the form fields
+            document.getElementById("school_name_eng").value = selectedEducation.school_name_eng;
+            document.getElementById("school_name_kor").value = selectedEducation.school_name_kor;
+            document.getElementById("degree_eng").value = selectedEducation.degree_eng;
+            document.getElementById("degree_kor").value = selectedEducation.degree_kor;
+            document.getElementById("major_eng").value = selectedEducation.major_eng;
+            document.getElementById("major_kor").value = selectedEducation.major_kor;
+
+            // Convert and format the start date and end date fields
+            const startDateObject = new Date(selectedEducation.start_date);
+            const formattedStartDate = startDateObject.toISOString().split('T')[0];
+            document.getElementById("education_start_date").value = formattedStartDate;
+
+            const endDateObject = new Date(selectedEducation.end_date);
+            const formattedEndDate = endDateObject.toISOString().split('T')[0];
+            document.getElementById("education_end_date").value = formattedEndDate;
+            
+            document.getElementById("education_description_eng").value = selectedEducation.description_eng;
+            document.getElementById("education_description_kor").value = selectedEducation.description_kor;
+            document.getElementById("education_logo_image").value = selectedEducation.logo_image;
         }
     });
 }
@@ -399,6 +467,45 @@ function updateSkill() {
     });
 }
 
+function updateEducation() {
+    // Update education details
+    document.getElementById("update_education").addEventListener("click", function(event) {
+        event.preventDefault();
+        const formData = {
+            id: parseInt(document.getElementById("education_select").value),
+            basic_info_id: parseInt(document.getElementById("basic_info_id").value),
+            school_name_eng: document.getElementById("school_name_eng").value,
+            school_name_kor: document.getElementById("school_name_kor").value,
+            degree_eng: document.getElementById("degree_eng").value,
+            degree_kor: document.getElementById("degree_kor").value,
+            major_eng: document.getElementById("major_eng").value,
+            major_kor: document.getElementById("major_kor").value,
+            start_date: document.getElementById("education_start_date").value,
+            end_date: document.getElementById("education_end_date").value,
+            description_eng: document.getElementById("education_description_eng").value,
+            description_kor: document.getElementById("education_description_kor").value,
+            logo_image: document.getElementById("education_logo_image").value
+        };
+
+        // Make an AJAX request to update the data
+        $.ajax({
+            url: '/api/education',  // your API endpoint
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                alert('Education successfully updated.');
+                console.log('Education successfully updated.');
+            },
+            error: function(response) {
+                const serverMessage = response.responseJSON ? response.responseJSON.error : 'An error occurred.';
+                alert('Failed to update education: ' + serverMessage);
+                console.error('Server Error:', serverMessage);
+            }
+        });
+    });
+}
+
 // 서버에서 스킬 목록을 불러와서 #project_skills에 추가
 function loadSkills() {
     $.get("/api/skill", function(data) {
@@ -457,6 +564,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCareerData();
     loadProjectDataIntoForm();
     loadSkillDataIntoForm();
+    loadEducationDataIntoForm();
 
     // 스킬을 프로젝트에 추가
     $("#add_skill_to_project").click(function() {
@@ -487,4 +595,5 @@ document.addEventListener("DOMContentLoaded", function() {
     updateCareer();
     updateProject();
     updateSkill();
+    updateEducation();
 });
