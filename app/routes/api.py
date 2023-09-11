@@ -276,23 +276,38 @@ def remove_project_skill():
 
 
 @api.route('/skill', methods=['POST'])
-def create_skill():
+def create_or_update_skill():
     data = request.get_json()
-    new_skill = Skill(
-        basic_info_id=data['basic_info_id'],
-        skill_name_eng=data['skill_name_eng'],
-        skill_name_kor=data['skill_name_kor'],
-        skill_type_eng=data['skill_type_eng'],
-        skill_type_kor=data['skill_type_kor'],
-        start_date=data['start_date'],
-        skill_level=data['skill_level'],
-        description_eng=data['description_eng'],
-        description_kor=data['description_kor'],
-        skill_image=data['skill_image']
-    )
-    db.session.add(new_skill)
-    db.session.commit()
-    return jsonify(new_skill.to_dict()), 201
+    skill_id = data.get('id', None)
+
+    if skill_id:
+        # Update existing skill
+        skill = Skill.query.get(skill_id)
+        if not skill:
+            return jsonify({"error": "Skill not found"}), 404
+
+        for key, value in data.items():
+            setattr(skill, key, value)
+
+        db.session.commit()
+        return jsonify(skill.to_dict()), 200
+    else:
+        # Create new skill
+        new_skill = Skill(
+            basic_info_id=data['basic_info_id'],
+            skill_name_eng=data['skill_name_eng'],
+            skill_name_kor=data['skill_name_kor'],
+            skill_type_eng=data['skill_type_eng'],
+            skill_type_kor=data['skill_type_kor'],
+            start_date=data['start_date'],
+            skill_level=data['skill_level'],
+            description_eng=data['description_eng'],
+            description_kor=data['description_kor'],
+            skill_image=data['skill_image']
+        )
+        db.session.add(new_skill)
+        db.session.commit()
+        return jsonify(new_skill.to_dict()), 201
 
 
 @api.route('/education', methods=['POST'])

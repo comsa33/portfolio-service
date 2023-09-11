@@ -362,6 +362,43 @@ function updateProject() {
     });
 }
 
+function updateSkill() {
+    // Update skill details
+    document.getElementById("update_skill").addEventListener("click", function(event) {
+        event.preventDefault();
+        const formData = {
+            id: parseInt(document.getElementById("skill_select").value),
+            basic_info_id: parseInt(document.getElementById("basic_info_id").value),
+            skill_name_eng: document.getElementById("skill_name_eng").value,
+            skill_name_kor: document.getElementById("skill_name_kor").value,
+            skill_type_eng: document.getElementById("skill_type_eng").value,
+            skill_type_kor: document.getElementById("skill_type_kor").value,
+            start_date: document.getElementById("skill_start_date").value,
+            skill_level: parseInt(document.getElementById("skill_level").value),
+            description_eng: document.getElementById("skill_description_eng").value,
+            description_kor: document.getElementById("skill_description_kor").value,
+            skill_image: document.getElementById("skill_image").value
+        };
+
+        // Make an AJAX request to update the data
+        $.ajax({
+            url: '/api/skill',  // your API endpoint
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                alert('Skill successfully updated.');
+                console.log('Skill successfully updated.');
+            },
+            error: function(response) {
+                const serverMessage = response.responseJSON ? response.responseJSON.error : 'An error occurred.';
+                alert('Failed to update skill: ' + serverMessage);
+                console.error('Server Error:', serverMessage);
+            }
+        });
+    });
+}
+
 // 서버에서 스킬 목록을 불러와서 #project_skills에 추가
 function loadSkills() {
     $.get("/api/skill", function(data) {
@@ -449,4 +486,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     updateCareer();
     updateProject();
+    updateSkill();
 });
