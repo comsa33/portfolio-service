@@ -63,7 +63,13 @@ function populateSelectBoxes(data, type) {
     let targetData = type === "career" ? careerData : projectData;
     let selectElementId = type === "career" ? "career_select" : "project_select";
     
-    targetData = {}; // 초기화
+    // Initialize the actual careerData or projectData
+    if (type === "career") {
+        careerData = {};
+    } else {
+        projectData = {};
+    }
+
     const selectElement = document.getElementById(selectElementId);
     selectElement.innerHTML = "";
 
