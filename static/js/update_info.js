@@ -73,14 +73,6 @@ function populateSelectBoxes(data, type) {
     defaultOption.textContent = "선택해주세요";
     selectElement.appendChild(defaultOption);
 
-    if (type === "career") {
-        // 개인 프로젝트 옵션 추가
-        const personalProjectOption = document.createElement("option");
-        personalProjectOption.value = "personal";
-        personalProjectOption.textContent = "개인 프로젝트";
-        selectElement.appendChild(personalProjectOption);
-    }
-
     // 실제 데이터로부터 옵션 추가
     data.forEach(item => {
         const option = document.createElement("option");
