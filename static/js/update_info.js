@@ -28,12 +28,6 @@ function loadCareersbyBasicInfoId() {
         const basicInfoId = this.value;
         fetchCareers(basicInfoId);
     });
-
-    // 초기 로딩 시에는 자동으로 첫 번째 아이템에 대한 커리어를 로딩
-    const initialBasicInfoId = basicInfoDropdown.value;
-    if (initialBasicInfoId) {
-        fetchCareers(initialBasicInfoId);
-    }
 }
 
 let careerData = {}; // 이곳에 모든 커리어 데이터를 저장합니다.
@@ -125,8 +119,12 @@ function updateCareer() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // basic_info 데이터 로딩 로직 호출
-    loadBasicInfoData();
+    loadBasicInfoData().then(() => {
+        const initialBasicInfoId = parseInt(document.getElementById("basic_info_id").value);
+        if (initialBasicInfoId) {
+          fetchCareers(initialBasicInfoId);
+        }
+      });
     loadCareersbyBasicInfoId();
     loadCareerDataintoForm();
     updateCareer();
