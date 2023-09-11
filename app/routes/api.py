@@ -87,7 +87,25 @@ def get_project_skills(project_id):
 
 @api.route('/skill', methods=['GET'])
 def get_skills():
-    skills = Skill.query.all()
+    # URL query parameter에서 basic_info_id 가져오기
+    basic_info_id = request.args.get('basic_info_id')
+
+    # basic_info_id가 제공되지 않은 경우, 모든 Skill 데이터를 가져옴
+    if not basic_info_id:
+        skills = Skill.query.all()
+
+    # basic_info_id가 제공된 경우
+    else:
+        try:
+            basic_info_id = int(basic_info_id)
+        except ValueError:
+            return jsonify({"error": "Invalid basic_info_id"}), 400
+
+        skills = Skill.query.filter_by(basic_info_id=basic_info_id).all()
+
+    if not skills:
+        return jsonify({"error": "No skills found for this basic_info_id"}), 404
+
     return jsonify([skill.to_dict() for skill in skills]), 200
 
 

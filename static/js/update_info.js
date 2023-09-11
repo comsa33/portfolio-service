@@ -34,9 +34,11 @@ function loadCareersbyBasicInfoId() {
     basicInfoDropdown.addEventListener("change", function() {
         const basicInfoId = this.value;
         fetchCareersAndProjects(basicInfoId);
+        fetchSkills(basicInfoId);
         // Show the career form
         document.getElementById("career_form").style.display = "block";
         document.getElementById("project_form").style.display = "block";
+        document.getElementById("skill_form").style.display = "block";
     });
 }
 
@@ -110,6 +112,33 @@ function loadCareerData() {
             const option = document.createElement("option");
             option.value = career.id;
             option.textContent = career.company_name_kor;
+            selectElement.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
+}
+
+function fetchSkills(basicInfoId) {
+    fetch(`/api/skill?basic_info_id=${basicInfoId}`)
+    .then(response => response.json())
+    .then(data => {
+        const selectElement = document.getElementById("skill_select");
+        
+        // Clear previous options
+        selectElement.innerHTML = "";
+
+        // Null 옵션 추가
+        const nullOption = document.createElement("option");
+        nullOption.value = "";
+        nullOption.textContent = "선택하세요";
+        selectElement.appendChild(nullOption);
+
+        data.forEach(skill => {
+            const option = document.createElement("option");
+            option.value = skill.id;
+            option.textContent = skill.skill_name_eng; 
             selectElement.appendChild(option);
         });
     })

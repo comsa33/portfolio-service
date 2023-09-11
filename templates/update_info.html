@@ -233,10 +233,73 @@
             <button type="submit" id="update_project" class="btn btn-primary">Update Project</button>
         </form>
         
-        <hr
+        <hr>
 
-        
+        <h2>Skill Info</h2>
+        <div>
+            <div class="form-group">
+                <label for="skill_select">Select Skill</label>
+                <select id="skill_select" class="form-control">
+                    <!-- Options filled dynamically via JavaScript -->
+                </select>
+            </div>
 
+            <form id="skill_form" style="display:none;">
+                <div class="form-group">
+                    <label for="skill_name_eng">Skill Name (English)</label>
+                    <input type="text" class="form-control" id="skill_name_eng">
+                </div>
+                <div class="form-group">
+                    <label for="skill_name_kor">Skill Name (Korean)</label>
+                    <input type="text" class="form-control" id="skill_name_kor">
+                </div>
+                <div class="form-group">
+                    <label for="skill_type_eng">Skill Type (English)</label>
+                    <select class="form-control" id="skill_type_eng">
+                        <option value="Programming Language">Programming Language</option>
+                        <option value="OS">OS</option>
+                        <option value="Databases">Databases</option>
+                        <option value="Libraries">Libraries</option>
+                        <option value="Frameworks">Frameworks</option>
+                        <option value="Visualization Tools">Visualization Tools</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="skill_type_kor">Skill Type (Korean)</label>
+                    <select class="form-control" id="skill_type_kor">
+                        <option value="프로그래밍 언어">프로그래밍 언어</option>
+                        <option value="운영체제">운영체제</option>
+                        <option value="데이터베이스">데이터베이스</option>
+                        <option value="라이브러리">라이브러리</option>
+                        <option value="프레임워크">프레임워크</option>
+                        <option value="시각화 도구">시각화 도구</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="skill_start_date">Start Date</label>
+                    <input type="date" class="form-control" id="skill_start_date">
+                </div>
+                <div class="form-group">
+                    <label for="skill_level">Skill Level</label>
+                    <input type="range" class="form-control-range" id="skill_level" min="1" max="5" step="1">
+                    <output id="skill_level_output"></output>
+                </div>
+                <div class="form-group">
+                    <label for="skill_description_eng">Description (English)</label>
+                    <textarea class="form-control" id="skill_description_eng"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skill_description_kor">Description (Korean)</label>
+                    <textarea class="form-control" id="skill_description_kor"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skill_image">Skill Image</label>
+                    <input type="text" class="form-control" id="skill_image">
+                </div>
+                <button type="submit" id="update_skill" class="btn btn-primary">Update Skill</button>
+            </form>
     </div>
 
 
