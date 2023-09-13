@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
     let isEnglish = true;
-    
-    document.getElementById('languageToggle').addEventListener('click', function() {
-        isEnglish = !isEnglish;
 
-        const toggleText = (selector, attrEng, attrKor) => {
-            document.querySelectorAll(selector).forEach(el => {
-                el.textContent = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
-            });
-        };
+    // Toggle text function
+    const toggleText = (selector, attrEng, attrKor) => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.textContent = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
+        });
+    };
+
+    // Initial toggle status
+    document.getElementById('labelLanguage').textContent = isEnglish ? 'English' : '한글';
+
+    // Toggle event listener
+    document.getElementById('languageSwitch').addEventListener('change', function() {
+        isEnglish = !isEnglish;
+        document.getElementById('labelLanguage').textContent = isEnglish ? 'English' : '한글';
 
         // Toggle text for all elements
         toggleText('#fullName', 'data-eng', 'data-kor');
