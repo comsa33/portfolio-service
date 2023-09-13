@@ -67,8 +67,12 @@
             </h2>
             <ul id="educationList">
             {% for edu in info.educations %}
-                <li data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }} " data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
+                <li class="school-item" data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}" data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
+                    <span class="toggle-icon">▶</span>
                     {{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}
+                    <div class="school-description" data-eng="{{ edu.description_eng }}" data-kor="{{ edu.description_kor }}" style="display: none;">
+                        {{ edu.description_eng }}
+                    </div>
                 </li>
             {% endfor %}
             </ul>

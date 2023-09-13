@@ -24,7 +24,36 @@ document.addEventListener("DOMContentLoaded", function() {
         el.innerHTML = marked.marked(text);
     };
 
-    initMarkdown();
+    // 학교 정보 토글 함수 추가
+    const toggleSchoolDescription = () => {
+        const schoolItems = document.querySelectorAll('.school-item');
+        schoolItems.forEach(item => {
+            const toggleIcon = item.querySelector('.toggle-icon');
+            const description = item.querySelector('.school-description');
+            
+            toggleIcon.addEventListener('click', function() {
+                if (description.style.display === 'none' || description.style.display === '') {
+                    description.style.display = 'block';
+                    toggleIcon.classList.add('rotated');
+                } else {
+                    description.style.display = 'none';
+                    toggleIcon.classList.remove('rotated');
+                }
+                
+                const text = isEnglish ? description.getAttribute('data-eng') : description.getAttribute('data-kor');
+                description.innerHTML = text;  // 필요하면 여기에 marked.marked(text)를 사용
+            });
+        });
+    };
+
+    // 초기 실행 함수에 추가
+    const initMarkdownAndToggle = () => {
+        initMarkdown();
+        toggleSchoolDescription();  // 이 함수를 호출해서 학교 정보 토글 기능을 초기화
+    };
+
+    // 초기 실행
+    initMarkdownAndToggle();
     
     // Initial toggle status
     document.getElementById('labelLanguage').textContent = isEnglish ? 'English' : '한글';
@@ -48,5 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');
+        toggleSchoolDescription();
     });
 });
