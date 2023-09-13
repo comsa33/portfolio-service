@@ -28,7 +28,18 @@ def user_portfolio(first_name_eng):
         educations = Education.query.filter_by(basic_info_id=user_id).all()
         all_skills = Skill.query.filter_by(basic_info_id=user_id).all()
 
-        # 경력 정보와 관련된 프로젝트 및 스킬 정보를 가져옵니다.
+        # 스킬 타입에 따른 분류
+        skill_type_dict_eng = {}
+        skill_type_dict_kor = {}
+        for skill in all_skills:
+            skill_dict = skill.to_dict()
+            if skill.skill_type_eng not in skill_type_dict_eng:
+                skill_type_dict_eng[skill.skill_type_eng] = []
+            if skill.skill_type_kor not in skill_type_dict_kor:
+                skill_type_dict_kor[skill.skill_type_kor] = []
+            skill_type_dict_eng[skill.skill_type_eng].append(skill_dict)
+            skill_type_dict_kor[skill.skill_type_kor].append(skill_dict)
+
         careers = Career.query.filter_by(basic_info_id=user_id).all()
         careers_info = []
 
@@ -54,19 +65,14 @@ def user_portfolio(first_name_eng):
             career_dict["projects"] = project_info
             careers_info.append(career_dict)
 
-        # skill_type_eng과 skill_type_kor의 고유한 값들을 가져옵니다.
-        distinct_skill_types_eng = [row[0] for row in Skill.query.with_entities(Skill.skill_type_eng).distinct().all()]
-        distinct_skill_types_kor = [row[0] for row in Skill.query.with_entities(Skill.skill_type_kor).distinct().all()]
-
-        # 'skill_types_eng'와 'skill_types_kor'을 full_user_info에 추가합니다.
         full_user_info = {
             'user': user.to_dict(),
             'educations': [education.to_dict() for education in educations],
             'skills': [skill.to_dict() for skill in all_skills],
             'careers': careers_info,
             'personal_projects': personal_project_info,
-            'skill_types_eng': distinct_skill_types_eng,
-            'skill_types_kor': distinct_skill_types_kor
+            'skill_type_dict_eng': skill_type_dict_eng,
+            'skill_type_dict_kor': skill_type_dict_kor
         }
 
         return render_template(f'{first_name_eng}_portfolio.html', info=full_user_info)
