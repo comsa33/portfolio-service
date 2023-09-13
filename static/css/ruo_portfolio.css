@@ -41,10 +41,8 @@ ul {
 
 .toggle-icon {
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
-  
-.rotated {
-    transform: rotate(90deg);
+
+#school-description {
+    font-size: .9em;
 }
-  

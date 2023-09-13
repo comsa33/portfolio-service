@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const el = document.getElementById('introduction');
         const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
         el.innerHTML = marked.marked(text);
+        
+        // school-description 항목을 처리
+        const schoolDescriptions = document.querySelectorAll('.school-description');
+        schoolDescriptions.forEach((el) => {
+            const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
+            el.innerHTML = marked(text);
+        });
     };
 
     initMarkdown();
