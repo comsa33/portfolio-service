@@ -55,15 +55,24 @@ def user_portfolio(first_name_eng):
             career_dict["projects"] = project_info
             careers_info.append(career_dict)
 
+        sort_order = [
+            'OS', 'Programming Language', 'Databases', 'Libraries',
+            'Frameworks', 'Visualization Tools', 'Others'
+        ]
         # 기존의 all_skills 데이터에서 스킬을 해당 타입별로 분류합니다.
         skills_by_type = defaultdict(list)
         for skill in all_skills:
             skills_by_type[skill.skill_type_eng].append(skill.to_dict())
+        sorted_skills_by_type = {key: skills_by_type[key] for key in sort_order if key in skills_by_type}
+        # 누락된 키에 대해서도 처리할 수 있습니다.
+        for key in skills_by_type.keys():
+            if key not in sort_order:
+                sorted_skills_by_type[key] = skills_by_type[key]
 
         full_user_info = {
             'user': user.to_dict(),
             'educations': [education.to_dict() for education in educations],
-            'skills_by_type': skills_by_type,
+            'skills_by_type': sorted_skills_by_type,
             'careers': careers_info,
             'personal_projects': personal_project_info,
         }
