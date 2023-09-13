@@ -30,7 +30,7 @@ function toggleSchoolInfo() {
 
   
 document.addEventListener("DOMContentLoaded", function() {
-    let isEnglish = true;
+    let isEnglish = false;
 
     // Toggle text function without Markdown
     const toggleTextWithoutMarkdown = (selector, attrEng, attrKor) => {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const updateTooltipTitle = () => {
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
             const title = isEnglish ? el.getAttribute('data-eng') : el.getAttribute('data-kor');
-            el.setAttribute('title', title);
+            el.setAttribute('aria-label', title);
             // Dispose the existing tooltip
             var tooltipInstance = bootstrap.Tooltip.getInstance(el);
             if (tooltipInstance) {
