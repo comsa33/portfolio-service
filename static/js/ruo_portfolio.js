@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const toggleTextWithMarkdown = (selector, attrEng, attrKor) => {
         document.querySelectorAll(selector).forEach(el => {
             const text = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
-            el.innerHTML = marked(text);
+            el.innerHTML = marked.marked(text);
         });
     };
 
