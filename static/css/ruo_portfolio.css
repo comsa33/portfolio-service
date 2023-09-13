@@ -115,3 +115,16 @@ ul {
 .progress-bar {
     background-color: #84b5ff;
 }
+
+.skill-item {
+    position: relative;
+}
+
+.skill-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: make the background slightly transparent */
+    padding: 0 5px; /* Optional: add some padding */
+}
