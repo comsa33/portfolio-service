@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div class="form-check form-switch" id="languageSwith-div">
+        <div class="form-check form-switch" id="languageContainer">
             <input class="form-check-input" type="checkbox" id="languageSwitch">
             <label class="form-check-label" for="languageSwitch" id="labelLanguage">
                 <i class="fas fa-globe"></i> KOR
@@ -92,13 +92,18 @@
         <!-- Skill Info -->
         <div class="skill-info mt-5">
             <h2 id="skillTitle" data-eng="Skills" data-kor="기술스택">Skills</h2>
-            <ul id="skillList">
-            {% for skill in info.skills %}
-                <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
-                    {{ skill.skill_name_eng }} - {{ skill.skill_level }}
-                </li>
+            {% for skill_type_eng, skill_type_kor in zip(info.skill_types_eng, info.skill_types_kor) %}
+                <h3 data-eng="{{ skill_type_eng }}" data-kor="{{ skill_type_kor }}">{{ skill_type_eng }}</h3>
+                <ul id="skillList-{{ skill_type_eng }}">
+                    {% for skill in info.skills %}
+                        {% if skill.skill_type_eng == skill_type_eng %}
+                            <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
+                                {{ skill.skill_name_eng }} - {{ skill.skill_level }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             {% endfor %}
-            </ul>
         </div>
 
         <!-- Career Info -->

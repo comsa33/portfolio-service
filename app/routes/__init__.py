@@ -54,12 +54,19 @@ def user_portfolio(first_name_eng):
             career_dict["projects"] = project_info
             careers_info.append(career_dict)
 
+        # skill_type_eng과 skill_type_kor의 고유한 값들을 가져옵니다.
+        distinct_skill_types_eng = [row[0] for row in Skill.query.with_entities(Skill.skill_type_eng).distinct().all()]
+        distinct_skill_types_kor = [row[0] for row in Skill.query.with_entities(Skill.skill_type_kor).distinct().all()]
+
+        # 'skill_types_eng'와 'skill_types_kor'을 full_user_info에 추가합니다.
         full_user_info = {
             'user': user.to_dict(),
             'educations': [education.to_dict() for education in educations],
             'skills': [skill.to_dict() for skill in all_skills],
             'careers': careers_info,
             'personal_projects': personal_project_info,
+            'skill_types_eng': distinct_skill_types_eng,
+            'skill_types_kor': distinct_skill_types_kor
         }
 
         return render_template(f'{first_name_eng}_portfolio.html', info=full_user_info)
