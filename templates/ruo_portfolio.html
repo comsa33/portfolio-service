@@ -98,7 +98,7 @@
                             <li data-eng="{{ skill.skill_name_eng }}" data-kor="{{ skill.skill_name_kor }}" class="no-toggle skill-item">
                                 <div class="skill-name">{{ skill.skill_name_eng }}</div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5" data-bs-toggle="tooltip" data-bs-placement="top" data-eng="{{ skill.description_eng }}" data-kor="{{ skill.description_kor }}" title="{{ skill.description_eng }}"></div>
                                 </div>
                             </li>
                         {% endfor %}

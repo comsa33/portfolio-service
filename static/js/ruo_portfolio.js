@@ -48,6 +48,14 @@ document.addEventListener("DOMContentLoaded", function() {
             el.innerHTML = marked.marked(text);
         });
     };
+    
+    // 언어가 토글될 때마다 툴팁의 title을 업데이트하는 함수
+    const updateTooltipTitle = () => {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+            const title = isEnglish ? el.getAttribute('data-eng') : el.getAttribute('data-kor');
+            el.setAttribute('title', title);
+        });
+    }
 
     // 여기에 초기에 한 번 실행할 로직을 추가
     const initMarkdown = () => {
@@ -90,6 +98,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');
         toggleTextWithMarkdown('#school-description', 'data-eng', 'data-kor');
+
+        // 언어를 토글할 때 툴팁의 title도 업데이트
+        updateTooltipTitle();
     });
 
     toggleSchoolInfo();
