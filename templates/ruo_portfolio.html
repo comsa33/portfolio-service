@@ -92,19 +92,21 @@
         <!-- Skill Info -->
         <div class="skill-info mt-5">
             <h2 id="skillTitle" data-eng="Skills" data-kor="기술스택">Skills</h2>
-            {% for skill_type_eng, skills in info.skills_by_type.items() %}
-            <h5 id="skillType" data-eng="{{ skill_type_eng }}" data-kor="{{ skills[0].skill_type_kor }}">{{ skill_type_eng }}</h5>
-                <ul id="skillList-{{ skill_type_eng }}">
-                    {% for skill in skills %}
-                        <li data-eng="{{ skill.skill_name_eng }}" data-kor="{{ skill.skill_name_kor }}" class="no-toggle">
-                            {{ skill.skill_name_eng }}
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5"></div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endfor %}
+            <div id="skillDetails-container">
+                {% for skill_type_eng, skills in info.skills_by_type.items() %}
+                <h6 id="skillType" data-eng="{{ skill_type_eng }}" data-kor="{{ skills[0].skill_type_kor }}">{{ skill_type_eng }}</h6>
+                    <ul id="skillList-{{ skill_type_eng }}">
+                        {% for skill in skills %}
+                            <li data-eng="{{ skill.skill_name_eng }}" data-kor="{{ skill.skill_name_kor }}" class="no-toggle">
+                                {{ skill.skill_name_eng }}
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5"></div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
         </div>
 
         <!-- Career Info -->

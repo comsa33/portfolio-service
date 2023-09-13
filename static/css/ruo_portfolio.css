@@ -103,3 +103,15 @@ ul {
 .school-description ul {
     list-style-type: disc;
 }
+
+#skillDetails-container {
+    font-size: .75em;
+}
+
+#skillType ul {
+    padding-left: 10px;
+}
+
+.progress-bar {
+    background-color: #84b5ff;
+}
