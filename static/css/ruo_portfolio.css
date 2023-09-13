@@ -39,14 +39,19 @@ ul {
     margin-bottom: 5px;
 }
 
+.school-item {
+    margin-bottom: 10px;
+}
+
 .toggle-icon {
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     width: 1.5em;  /* 아이콘의 너비를 고정 */
     text-align: center;  /* 아이콘 내용을 중앙 정렬 */
+    margin-top: -50px;
 }
-  
+
 .school-info {
     display: inline-block;
     vertical-align: middle;
@@ -57,11 +62,14 @@ ul {
 }
 
 .school-date-info {
-    font-weight: 200;
+    color: gray;
+    font-size: .8em;
 }
 
 #school-description {
-    font-size: .9em;
+    font-size: .85em;
+    margin-left: 20px;
+    color: #727272;
 }
 
 .school-description ul {
