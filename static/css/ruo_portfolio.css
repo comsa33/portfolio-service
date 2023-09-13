@@ -43,6 +43,10 @@ ul {
     cursor: pointer;
 }
 
+.school-name {
+    display: block;  /* 또는 display: inline-block; */
+}
+  
 #school-description {
     font-size: .9em;
 }
