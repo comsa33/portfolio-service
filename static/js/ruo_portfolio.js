@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle text function
     const toggleText = (selector, attrEng, attrKor) => {
         document.querySelectorAll(selector).forEach(el => {
-            el.textContent = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
+            el.innerHTML = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
         });
     };
 
