@@ -30,7 +30,7 @@ function toggleSchoolInfo() {
 
   
 document.addEventListener("DOMContentLoaded", function() {
-    let isEnglish = false;
+    let isEnglish = true;
 
     // Toggle text function without Markdown
     const toggleTextWithoutMarkdown = (selector, attrEng, attrKor) => {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const updateTooltipTitle = () => {
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
             const title = isEnglish ? el.getAttribute('data-eng') : el.getAttribute('data-kor');
-            el.setAttribute('aria-label', title);
+            el.setAttribute('data-bs-original-title', title);
             // Dispose the existing tooltip
             var tooltipInstance = bootstrap.Tooltip.getInstance(el);
             if (tooltipInstance) {
@@ -74,13 +74,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const initMarkdown = () => {
         // 예를 들어, #introduction 항목을 처리
         const el = document.getElementById('introduction');
-        const text = el.getAttribute('data-kor'); // 또는 현재 언어에 맞는 속성을 선택
+        const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
         el.innerHTML = marked.marked(text);
         
         // school-description 항목을 처리
         const schoolDescriptions = document.querySelectorAll('.school-description');
         schoolDescriptions.forEach((el) => {
-            const text = el.getAttribute('data-kor'); // 또는 현재 언어에 맞는 속성을 선택
+            const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
             el.innerHTML = marked.marked(text);
         });
     };
