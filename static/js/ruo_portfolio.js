@@ -4,7 +4,7 @@ function toggleSchoolInfo() {
   
     // 각 학교 항목에 대해 이벤트 리스너를 추가합니다.
     schoolItems.forEach((schoolItem) => {
-        const toggleIcon = schoolItem.querySelector('.toggle-icon');
+        const toggleIcon = schoolItem.querySelector('.toggle-icon-wrapper i');
         const schoolDescription = schoolItem.querySelector('.school-description');
   
         // 토글 아이콘을 클릭했을 때의 이벤트
