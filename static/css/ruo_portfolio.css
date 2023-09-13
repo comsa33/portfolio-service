@@ -41,8 +41,15 @@ ul {
 
 .toggle-icon {
     cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
 }
-
+  
+.school-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+  
 .school-name {
     display: block;  /* 또는 display: inline-block; */
 }
