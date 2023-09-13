@@ -61,7 +61,6 @@
             <h2 id="educationTitle" data-eng="Education" data-kor="교육">
                 Education
             </h2>
-            <hr>
             <ul id="educationList">
             {% for edu in info.educations %}
                 <li data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }} " data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
@@ -74,7 +73,6 @@
         <!-- Skill Info -->
         <div class="skill-info mt-5">
             <h2 id="skillTitle" data-eng="Skills" data-kor="기술스택">Skills</h2>
-            <hr>
             <ul id="skillList">
             {% for skill in info.skills %}
                 <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
@@ -87,7 +85,6 @@
         <!-- Career Info -->
         <div class="career-info mt-5">
             <h2 id="careerTitle" data-eng="Projects" data-kor="프로젝트">Projects</h2>
-            <hr>
             <div id="careerList">
             {% for career in info.careers %}
                 <div class="career-item">
@@ -112,7 +109,7 @@
         <hr>
 
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
