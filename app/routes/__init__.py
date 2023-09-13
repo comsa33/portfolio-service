@@ -1,4 +1,5 @@
 from datetime import datetime
+from collections import defaultdict
 
 from flask import Blueprint, render_template
 from sqlalchemy import func
@@ -28,18 +29,7 @@ def user_portfolio(first_name_eng):
         educations = Education.query.filter_by(basic_info_id=user_id).all()
         all_skills = Skill.query.filter_by(basic_info_id=user_id).all()
 
-        # 스킬 타입에 따른 분류
-        skill_type_dict_eng = {}
-        skill_type_dict_kor = {}
-        for skill in all_skills:
-            skill_dict = skill.to_dict()
-            if skill.skill_type_eng not in skill_type_dict_eng:
-                skill_type_dict_eng[skill.skill_type_eng] = []
-            if skill.skill_type_kor not in skill_type_dict_kor:
-                skill_type_dict_kor[skill.skill_type_kor] = []
-            skill_type_dict_eng[skill.skill_type_eng].append(skill_dict)
-            skill_type_dict_kor[skill.skill_type_kor].append(skill_dict)
-
+        # 경력 정보와 관련된 프로젝트 및 스킬 정보를 가져옵니다.
         careers = Career.query.filter_by(basic_info_id=user_id).all()
         careers_info = []
 
@@ -65,14 +55,17 @@ def user_portfolio(first_name_eng):
             career_dict["projects"] = project_info
             careers_info.append(career_dict)
 
+        # 기존의 all_skills 데이터에서 스킬을 해당 타입별로 분류합니다.
+        skills_by_type = defaultdict(list)
+        for skill in all_skills:
+            skills_by_type[skill.skill_type_eng].append(skill.to_dict())
+
         full_user_info = {
             'user': user.to_dict(),
             'educations': [education.to_dict() for education in educations],
-            'skills': [skill.to_dict() for skill in all_skills],
+            'skills_by_type': skills_by_type,
             'careers': careers_info,
             'personal_projects': personal_project_info,
-            'skill_type_dict_eng': skill_type_dict_eng,
-            'skill_type_dict_kor': skill_type_dict_kor
         }
 
         return render_template(f'{first_name_eng}_portfolio.html', info=full_user_info)
