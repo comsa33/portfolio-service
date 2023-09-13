@@ -69,9 +69,12 @@
             {% for edu in info.educations %}
             <li class="school-item">
                 <span class="toggle-icon">▶</span>
-                <span id="school-info" class="school-info" data-eng="{{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}" data-kor="{{ edu.school_name_kor }} - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
-                  {{ edu.school_name_eng }} - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}
+                <span id="school-info" class="school-info" 
+                        data-eng="<strong>{{ edu.school_name_eng }}</strong> - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}" 
+                        data-kor="<strong>{{ edu.school_name_kor }}</strong> - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">
+                    <strong>{{ edu.school_name_eng }}</strong> - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}
                 </span>
+
                 <div id="school-description" class="school-description" data-eng="{{ edu.description_eng }}" data-kor="{{ edu.description_kor }}" style="display: none;">
                   {{ edu.description_eng }}
                 </div>

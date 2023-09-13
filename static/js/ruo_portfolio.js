@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const schoolDescriptions = document.querySelectorAll('.school-description');
         schoolDescriptions.forEach((el) => {
             const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
-            el.innerHTML = marked(text);
+            el.innerHTML = marked.marked(text);
         });
     };
 
