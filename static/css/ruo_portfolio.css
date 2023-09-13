@@ -111,9 +111,15 @@ ul {
 #skillDetails-container ul {
     padding-left: 10px;
 }
+.progress {
+    background-color: #dbdcdd;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
 
 .progress-bar {
-    background-color: #84b5ff;
+    background-image: linear-gradient(to right, #b9c9e2, #7b90cd);
+    border-radius: 10px;
 }
 
 .skill-item {
@@ -125,6 +131,7 @@ ul {
     top: 0;
     left: 0;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: make the background slightly transparent */
+    background-color: rgba(255, 255, 255, 0);
+    color: #08307c;
     padding: 0 5px; /* Optional: add some padding */
 }
