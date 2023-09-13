@@ -68,7 +68,9 @@
             <ul id="educationList">
             {% for edu in info.educations %}
             <li class="school-item">
-                <span class="toggle-icon">▶</span>
+                <span class="toggle-icon">
+                    <i class="fa fa-chevron-right toggle-icon"></i>
+                </span>
                 <span id="school-info" class="school-info" 
                     data-eng="<strong class='school-name'>{{ edu.school_name_eng }}</strong> - {{ edu.degree_eng }} | {{ edu.major_eng }} | {{ edu.start_date }} ~ {{ edu.end_date }}" 
                     data-kor="<strong class='school-name'>{{ edu.school_name_kor }}</strong> - {{ edu.degree_kor }}  | {{ edu.major_kor }} | {{ edu.start_date }} ~ {{ edu.end_date }}">

@@ -4,20 +4,27 @@ function toggleSchoolInfo() {
   
     // 각 학교 항목에 대해 이벤트 리스너를 추가합니다.
     schoolItems.forEach((schoolItem) => {
-      const toggleIcon = schoolItem.querySelector('.toggle-icon');
-      const schoolDescription = schoolItem.querySelector('.school-description');
+        const toggleIcon = schoolItem.querySelector('.toggle-icon');
+        const schoolDescription = schoolItem.querySelector('.school-description');
   
-      // 토글 아이콘을 클릭했을 때의 이벤트
-      toggleIcon.addEventListener('click', function() {
-        // 정보가 표시되어 있는지 확인하고 표시 상태를 변경합니다.
-        if (schoolDescription.style.display === 'none' || schoolDescription.style.display === '') {
-          schoolDescription.style.display = 'block';
-          toggleIcon.textContent = '▼';  // 아이콘을 변경합니다.
-        } else {
-          schoolDescription.style.display = 'none';
-          toggleIcon.textContent = '▶';  // 아이콘을 변경합니다.
-        }
-      });
+        // 토글 아이콘을 클릭했을 때의 이벤트
+        toggleIcon.addEventListener('click', function() {
+            // 정보가 표시되어 있는지 확인하고 표시 상태를 변경합니다.
+            if (schoolDescription.style.display === 'none' || schoolDescription.style.display === '') {
+            schoolDescription.style.display = 'block';
+            
+            // Font Awesome 아이콘을 변경합니다.
+            toggleIcon.classList.remove('fa-chevron-right');
+            toggleIcon.classList.add('fa-chevron-down');
+        
+            } else {
+            schoolDescription.style.display = 'none';
+            
+            // Font Awesome 아이콘을 변경합니다.
+            toggleIcon.classList.remove('fa-chevron-down');
+            toggleIcon.classList.add('fa-chevron-right');
+            }
+        });
     });
 }
 
