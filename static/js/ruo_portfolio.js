@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle text function without Markdown
     const toggleTextWithoutMarkdown = (selector, attrEng, attrKor) => {
         document.querySelectorAll(selector).forEach(el => {
-            el.innerHTML = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
+            if (!el.classList.contains('no-toggle')) {
+                el.innerHTML = isEnglish ? el.getAttribute(attrEng) : el.getAttribute(attrKor);
+            }
         });
     };
 
