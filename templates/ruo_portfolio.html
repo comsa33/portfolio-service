@@ -26,10 +26,6 @@
 
             <hr>
 
-            <h2 id="jobTitle" data-eng="{{ info.user.job_title_eng }}" data-kor="{{ info.user.job_title_kor }}">
-                {{ info.user.job_title_eng }}
-            </h2>
-
             <h6 id="email">
                 <i class="fas fa-envelope"></i> <a href="mailto:{{ info.user.email }}">{{ info.user.email }}</a>
             </h6>
@@ -39,11 +35,11 @@
             </h6>
                         
             <h6 id="github">
-                <i class="fab fa-github"></i> <a href="{{ info.user.github }}">{{ info.user.github }}</a>
+                <i class="fab fa-github"></i> <a href="{{ info.user.github }}">GitHub</a>
             </h6>
                         
             <h6 id="linkedin">
-                <i class="fab fa-linkedin"></i> <a href="{{ info.user.linkedin }}">{{ info.user.linkedin }}</a>
+                <i class="fab fa-linkedin"></i> <a href="{{ info.user.linkedin }}">LinkedIn</a>
             </h6>
                         
             <h6 id="address" data-eng='<i class="fas fa-map-marker-alt"></i> {{ info.user.address_eng }}' data-kor='<i class="fas fa-map-marker-alt"></i> {{ info.user.address_kor }}'>

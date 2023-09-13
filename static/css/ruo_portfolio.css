@@ -6,7 +6,12 @@ body {
     font-size: 36px;
 }
 
-.userTitle {
+.basic-info h6 {
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+#userTitle {
     font-weight: 200;
 }
 
@@ -27,6 +32,10 @@ body {
     margin-bottom: 10px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+}
+
+#educationList {
+    padding-left: 0;
 }
 
 ul {
@@ -53,7 +62,9 @@ ul {
     vertical-align: middle;
     width: 1.5em;  /* 아이콘의 너비를 고정 */
     text-align: center;  /* 아이콘 내용을 중앙 정렬 */
-    margin-top: -50px;
+    margin-top: -41px;
+    font-size: .8em;
+    color: gray;
 }
 
 .school-info {
