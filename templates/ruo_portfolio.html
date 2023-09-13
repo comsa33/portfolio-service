@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ info.user.first_name_eng }} 포트폴리오</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ruo_portfolio.css') }}">
 </head>
 <body>
@@ -19,29 +20,33 @@
             <h1 id="fullName" data-eng="{{ info.user.first_name_eng }} {{ info.user.last_name_eng }}" data-kor="{{ info.user.last_name_kor }}{{ info.user.first_name_kor }}">
                 {{ info.user.first_name_eng }} {{ info.user.last_name_eng }}
             </h1>
+
             <hr>
+
             <h2 id="jobTitle" data-eng="{{ info.user.job_title_eng }}" data-kor="{{ info.user.job_title_kor }}">
                 {{ info.user.job_title_eng }}
             </h2>
-            <h6 id="email" data-eng='Email: &lt;a href="mailto:{{ info.user.email }}"&gt;{{ info.user.email }}&lt;/a&gt;' data-kor='이메일: &lt;a href="mailto:{{ info.user.email }}"&gt;{{ info.user.email }}&lt;/a&gt;'>
-                Email: <a href="mailto:{{ info.user.email }}">{{ info.user.email }}</a>
+
+            <h6 id="email">
+                <i class="fas fa-envelope"></i> <a href="mailto:{{ info.user.email }}">{{ info.user.email }}</a>
+            </h6>
+                        
+            <h6 id="phone">
+                <i class="fas fa-phone-alt"></i> {{ info.user.phone }}
+            </h6>
+                        
+            <h6 id="github">
+                <i class="fab fa-github"></i> <a href="{{ info.user.github }}">{{ info.user.github }}</a>
+            </h6>
+                        
+            <h6 id="linkedin">
+                <i class="fab fa-linkedin"></i> <a href="{{ info.user.linkedin }}">{{ info.user.linkedin }}</a>
+            </h6>
+                        
+            <h6 id="address" data-eng='<i class="fas fa-map-marker-alt"></i> {{ info.user.address_eng }}' data-kor='<i class="fas fa-map-marker-alt"></i> {{ info.user.address_kor }}'>
+                <i class="fas fa-map-marker-alt"></i> {{ info.user.address_eng }}
             </h6>
             
-            <h6 id="phone" data-eng="Phone: {{ info.user.phone }}" data-kor="전화번호: {{ info.user.phone }}">
-                Phone: {{ info.user.phone }}
-            </h6>
-            
-            <h6 id="github" data-eng='Github: &lt;a href="{{ info.user.github }}"&gt;{{ info.user.github }}&lt;/a&gt;' data-kor='깃헙: &lt;a href="{{ info.user.github }}"&gt;{{ info.user.github }}&lt;/a&gt;'>
-                Github: <a href="{{ info.user.github }}">{{ info.user.github }}</a>
-            </h6>
-            
-            <h6 id="linkedin" data-eng='Linkedin: &lt;a href="{{ info.user.linkedin }}"&gt;{{ info.user.linkedin }}&lt;/a&gt;' data-kor='링크드인: &lt;a href="{{ info.user.linkedin }}"&gt;{{ info.user.linkedin }}&lt;/a&gt;'>
-                Linkedin: <a href="{{ info.user.linkedin }}">{{ info.user.linkedin }}</a>
-            </h6>
-            
-            <h6 id="address" data-eng="Address: {{ info.user.address_eng }}" data-kor="주소: {{ info.user.address_kor }}">
-                Address: {{ info.user.address_eng }}
-            </h6>
             <hr>
             <p id="introduction" data-eng="{{ info.user.introduction_eng }}" data-kor="{{ info.user.introduction_kor }}">
                 {{ info.user.introduction_eng }}
