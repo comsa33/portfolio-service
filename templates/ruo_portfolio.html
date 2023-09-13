@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container mt-5">
-        <!-- Add this code where you want the toggle to appear -->
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="languageSwitch">
             <label class="form-check-label" for="languageSwitch" id="labelLanguage">English</label>
@@ -24,26 +23,22 @@
             <h2 id="jobTitle" data-eng="{{ info.user.job_title_eng }}" data-kor="{{ info.user.job_title_kor }}">
                 {{ info.user.job_title_eng }}
             </h2>
-            <h6 id="email" data-eng="Email: &lt;a href=&quot;mailto:{{ info.user.email }}&quot;&gt;
-                {{ info.user.email }}" data-kor="이메일: &lt;a href=&quot;mailto:{{ info.user.email }}&quot;&gt;
-                    {{ info.user.email }}&quot;&gt;">
-                Email: <a href="mailto:{{ info.user.email }}">
-                    {{ info.user.email }}
-                </a>
+            <h6 id="email" data-eng='Email: &lt;a href="mailto:{{ info.user.email }}"&gt;{{ info.user.email }}&lt;/a&gt;' data-kor='이메일: &lt;a href="mailto:{{ info.user.email }}"&gt;{{ info.user.email }}&lt;/a&gt;'>
+                Email: <a href="mailto:{{ info.user.email }}">{{ info.user.email }}</a>
             </h6>
+            
             <h6 id="phone" data-eng="Phone: {{ info.user.phone }}" data-kor="전화번호: {{ info.user.phone }}">
                 Phone: {{ info.user.phone }}
             </h6>
-            <h6 id="github" data-eng="Github: &lt;a href=&quot;{{ info.user.github }}&quot;&gt;{{ info.user.github }}&lt;/a&gt;" data-kor="깃헙: &lt;a href=&quot;{{ info.user.github }}&quot;&gt;{{ info.user.github }}&lt;/a&gt;">
-                Github: <a href="{{ info.user.github }}">
-                    {{ info.user.github }}
-                </a>
+            
+            <h6 id="github" data-eng='Github: &lt;a href="{{ info.user.github }}"&gt;{{ info.user.github }}&lt;/a&gt;' data-kor='깃헙: &lt;a href="{{ info.user.github }}"&gt;{{ info.user.github }}&lt;/a&gt;'>
+                Github: <a href="{{ info.user.github }}">{{ info.user.github }}</a>
             </h6>
-            <h6 id="linkedin" data-eng="Linkedin: &lt;a href=&quot;{{ info.user.linkedin }}&quot;&gt;{{ info.user.linkedin }}&lt;/a&gt;" data-kor="링크드인: &lt;a href=&quot;{{ info.user.linkedin }}&quot;&gt;{{ info.user.linkedin }}&lt;/a&gt;">
-                Linkedin: <a href="{{ info.user.linkedin }}">
-                    {{ info.user.linkedin }}
-                </a>
+            
+            <h6 id="linkedin" data-eng='Linkedin: &lt;a href="{{ info.user.linkedin }}"&gt;{{ info.user.linkedin }}&lt;/a&gt;' data-kor='링크드인: &lt;a href="{{ info.user.linkedin }}"&gt;{{ info.user.linkedin }}&lt;/a&gt;'>
+                Linkedin: <a href="{{ info.user.linkedin }}">{{ info.user.linkedin }}</a>
             </h6>
+            
             <h6 id="address" data-eng="Address: {{ info.user.address_eng }}" data-kor="주소: {{ info.user.address_kor }}">
                 Address: {{ info.user.address_eng }}
             </h6>
