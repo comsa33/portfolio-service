@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#careerTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .career-item h3', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .project-item h4', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('h3[data-eng]', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#skillType', 'data-eng', 'data-kor');
 
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');

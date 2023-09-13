@@ -93,7 +93,7 @@
         <div class="skill-info mt-5">
             <h2 id="skillTitle" data-eng="Skills" data-kor="기술스택">Skills</h2>
             {% for skill_type_eng, skills in info.skill_type_dict_eng.items() %}
-                <h3 data-eng="{{ skill_type_eng }}" data-kor="{{ info.skill_type_dict_kor[skill_type_eng] }}">{{ skill_type_eng }}</h3>
+                <h3 id="skillType" data-eng="{{ skill_type_eng }}" data-kor="{{ info.skill_type_dict_kor[skill_type_eng] }}">{{ skill_type_eng }}</h3>
                 <ul id="skillList-{{ skill_type_eng }}">
                     {% for skill in skills %}
                         <li data-eng="{{ skill.skill_name_eng }} - {{ skill.skill_level }}" data-kor="{{ skill.skill_name_kor }} - {{ skill.skill_level }}">
