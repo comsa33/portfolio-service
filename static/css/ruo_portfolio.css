@@ -143,4 +143,5 @@ ul {
 .tooltip-inner {
     max-width: 300px;
     font-size: .8em;
+    text-align: left;
 }
