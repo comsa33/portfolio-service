@@ -74,13 +74,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const initMarkdown = () => {
         // 예를 들어, #introduction 항목을 처리
         const el = document.getElementById('introduction');
-        const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
+        const text = el.getAttribute('data-kor'); // 또는 현재 언어에 맞는 속성을 선택
         el.innerHTML = marked.marked(text);
         
         // school-description 항목을 처리
         const schoolDescriptions = document.querySelectorAll('.school-description');
         schoolDescriptions.forEach((el) => {
-            const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
+            const text = el.getAttribute('data-kor'); // 또는 현재 언어에 맞는 속성을 선택
             el.innerHTML = marked.marked(text);
         });
     };
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#educationTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('.school-main-info', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillTitle', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('[id^="skillList-"] li', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('.skill-name', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .career-item h3', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .project-item h4', 'data-eng', 'data-kor');
