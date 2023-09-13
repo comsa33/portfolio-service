@@ -137,4 +137,10 @@ ul {
     background-color: rgba(255, 255, 255, 0);
     color: #08307c;
     padding: 0 10px;
+    font-weight: 300;
+}
+
+.tooltip-inner {
+    max-width: 300px;
+    font-size: .8em;
 }

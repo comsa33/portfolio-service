@@ -96,7 +96,11 @@
                     <ul id="skillList-{{ skill_type_eng }}">
                         {% for skill in skills %}
                             <li class="no-toggle skill-item">
-                                <div class="skill-name" data-eng="{{ skill.skill_name_eng }}" data-kor="{{ skill.skill_name_kor }}">{{ skill.skill_name_eng }}</div>
+                                <div class="skill-name"
+                                    data-eng="<strong>{{ skill.skill_name_eng }}</strong> (tab to see description)"
+                                    data-kor="<strong>{{ skill.skill_name_kor }}</strong> (탭해서 설명보기)">
+                                    <strong>{{ skill.skill_name_eng }}</strong> (tab to see description)
+                                </div>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5" data-bs-toggle="tooltip" data-bs-placement="top" data-eng="{{ skill.description_eng }}" data-kor="{{ skill.description_kor }}" title="{{ skill.description_eng }}"></div>
                                 </div>
