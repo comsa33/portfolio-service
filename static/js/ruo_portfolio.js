@@ -1,3 +1,27 @@
+function toggleSchoolInfo() {
+    // 모든 'school-item' 클래스를 가진 요소를 가져옵니다.
+    const schoolItems = document.querySelectorAll('.school-item');
+  
+    // 각 학교 항목에 대해 이벤트 리스너를 추가합니다.
+    schoolItems.forEach((schoolItem) => {
+      const toggleIcon = schoolItem.querySelector('.toggle-icon');
+      const schoolDescription = schoolItem.querySelector('.school-description');
+  
+      // 토글 아이콘을 클릭했을 때의 이벤트
+      toggleIcon.addEventListener('click', function() {
+        // 정보가 표시되어 있는지 확인하고 표시 상태를 변경합니다.
+        if (schoolDescription.style.display === 'none' || schoolDescription.style.display === '') {
+          schoolDescription.style.display = 'block';
+          toggleIcon.textContent = '▼';  // 아이콘을 변경합니다.
+        } else {
+          schoolDescription.style.display = 'none';
+          toggleIcon.textContent = '▶';  // 아이콘을 변경합니다.
+        }
+      });
+    });
+}
+
+  
 document.addEventListener("DOMContentLoaded", function() {
     let isEnglish = true;
 
@@ -40,14 +64,16 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#address', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#educationTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#school-info', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#school-description', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillList li', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .career-item h3', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerList .project-item h4', 'data-eng', 'data-kor');
-
+        
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');
+        toggleTextWithMarkdown('#school-description', 'data-eng', 'data-kor');
     });
+
+    toggleSchoolInfo();
 });
