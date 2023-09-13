@@ -49,11 +49,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
     
+    // Initialize tooltip globally
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => {
+        new bootstrap.Tooltip(tooltipEl);
+    });
+    
+
     // 언어가 토글될 때마다 툴팁의 title을 업데이트하는 함수
     const updateTooltipTitle = () => {
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
             const title = isEnglish ? el.getAttribute('data-eng') : el.getAttribute('data-kor');
             el.setAttribute('title', title);
+            // Dispose the existing tooltip
+            var tooltipInstance = bootstrap.Tooltip.getInstance(el);
+            if (tooltipInstance) {
+                tooltipInstance.dispose();
+            }
+            // Initialize the new tooltip
+            new bootstrap.Tooltip(el);
         });
     }
 
