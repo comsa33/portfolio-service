@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle text for all elements without Markdown
         toggleTextWithoutMarkdown('#fullName', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#userTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#jobTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#address', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#educationTitle', 'data-eng', 'data-kor');

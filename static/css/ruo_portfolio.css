@@ -6,6 +6,10 @@ body {
     font-size: 36px;
 }
 
+.userTitle {
+    font-weight: 200;
+}
+
 .rounded-box {
     border: 1px solid #ccc;  /* 테두리 색상 */
     padding: 15px;  /* 안쪽 여백 */
