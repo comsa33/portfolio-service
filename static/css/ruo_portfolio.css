@@ -2,6 +2,19 @@ body {
     font-family: Pretendard, sans-serif;
 }
 
+#languageSwitch-div {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+#labelLanguage{
+    color: gray;
+    font-size: .9em;
+    font-weight: 300;
+}
+
 .basic-info h1 {
     font-size: 36px;
 }
