@@ -65,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
     initMarkdown();
 
     // Initial toggle status
-    document.getElementById('labelLanguage').textContent = isEnglish ? 'English' : '한글';
+    document.getElementById('labelLanguage').innerHTML = isEnglish ? '<i class="fas fa-globe"></i> KOR' : '<i class="fas fa-globe"></i> ENG';
 
     // Toggle event listener
     document.getElementById('languageSwitch').addEventListener('change', function() {
         isEnglish = !isEnglish;
-        document.getElementById('labelLanguage').textContent = isEnglish ? 'English' : '한글';
+        document.getElementById('labelLanguage').innerHTML = isEnglish ? '<i class="fas fa-globe"></i> KOR' : '<i class="fas fa-globe"></i> ENG';
 
         // Toggle text for all elements without Markdown
         toggleTextWithoutMarkdown('#fullName', 'data-eng', 'data-kor');
