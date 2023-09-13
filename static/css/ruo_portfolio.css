@@ -43,17 +43,27 @@ ul {
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
+    width: 1.5em;  /* 아이콘의 너비를 고정 */
+    text-align: center;  /* 아이콘 내용을 중앙 정렬 */
 }
   
 .school-info {
     display: inline-block;
     vertical-align: middle;
 }
-  
+
 .school-name {
     display: block;  /* 또는 display: inline-block; */
 }
-  
+
+.school-date-info {
+    font-weight: 200;
+}
+
 #school-description {
     font-size: .9em;
+}
+
+.school-description ul {
+    list-style-type: disc;
 }

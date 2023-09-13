@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#jobTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#address', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#educationTitle', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#school-info', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#school-main-info', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillList li', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerTitle', 'data-eng', 'data-kor');
