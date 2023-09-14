@@ -89,6 +89,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const text = el.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
             el.innerHTML = marked.marked(text);
         });
+
+        // project-role-description 항목을 처리
+        const projectRoleDescriptions = document.getElementById('project-role-description');
+        const project_role_text = projectRoleDescriptions.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
+        projectRoleDescriptions.innerHTML = marked.marked(project_role_text);
+
+        // project-issue-description 항목을 처리
+        const projectIssueDescriptions = document.getElementById('project-issue-description');
+            const project_issue_text = projectIssueDescriptions.getAttribute('data-eng'); // 또는 현재 언어에 맞는 속성을 선택
+            projectIssueDescriptions.innerHTML = marked.marked(project_issue_text);
     };
 
     initMarkdown();
