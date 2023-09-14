@@ -236,3 +236,7 @@ ul {
 #project-issue-description {
     font-size: .8em;
 }
+
+#project-issue-description p {
+    margin-bottom: 0;
+}
