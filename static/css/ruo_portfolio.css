@@ -99,9 +99,10 @@ ul {
 }
 
 #school-description {
-    font-size: .85em;
-    margin-left: 20px;
-    color: #727272;
+    font-size: .75em;
+    font-weight: 300;
+    margin-left: 5px;
+    color: #000000;
 }
 
 .school-description ul {

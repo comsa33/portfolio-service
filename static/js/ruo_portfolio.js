@@ -103,11 +103,14 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#educationTitle', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('.school-main-info', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#skillTitle', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#skillType', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('.skill-name', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#careerTitle', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#careerList .career-item h3', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#careerList .project-item h4', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#skillType', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#corporate-tab', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#personal-tab', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#company-name-department', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#company-position', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#project-name', 'data-eng', 'data-kor');
 
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');

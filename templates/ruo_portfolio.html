@@ -116,24 +116,67 @@
         <!-- Career Info -->
         <div class="career-info mt-5">
             <h2 id="careerTitle" data-eng="Projects" data-kor="프로젝트">Projects</h2>
-            <div id="careerList">
-            {% for career in info.careers %}
-                <div class="career-item">
-                    <h3 data-eng="{{ career.company_name_eng }}" data-kor="{{ career.company_name_kor }}">
-                        {{ career.company_name_eng }}
-                    </h3>
-                    <div class="projects">
-                        {% for project in career.projects %}
-                            <div class="project-item">
-                                <h4 data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
-                                    {{ project.project_name_eng }}
-                                </h4>
-                                <!-- Other project fields... -->
+            
+            <!-- 탭 메뉴 추가 -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="corporate-tab" data-toggle="tab" href="#corporate" data-eng="Corporate Projects" data-kor="사내 프로젝트">
+                        Corporate Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="personal-tab" data-toggle="tab" href="#personal" data-eng="Personal Projects" data-kor="개인 프로젝트">
+                        Personal Projects</a>
+                </li>
+            </ul>
+
+            <!-- 탭 내용 -->
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="corporate">
+                    <div id="careerList">
+                    {% for career in info.careers %}
+                        <div class="career-item">
+                            <div class="company-info-container">
+                                <p id="company-name-department" data-eng="<strong id='company-name'>{{ career.company_name_eng }}</strong> | {{ career.department_eng }}" 
+                                    data-kor="<strong id='company-name'>{{ career.company_name_kor }}</strong> | {{ career.department_kor }}">
+                                    <strong class="company-name">{{ career.company_name_eng }}</strong> | {{ career.department_eng }}
+                                </p>
+                                <div class="company-date-position-container">
+                                    <p id="company-date">
+                                        {{ career.start_date }} ~ {{ career.end_date }}
+                                    </p>
+                                    <p id="company-position" data-eng="{{ career.position_eng }}" data-kor="{{ career.position_kor }}">
+                                        {{ career.position_eng }}
+                                    </p>
+                                </div>
                             </div>
-                        {% endfor %}
+                            <div class="project-info-container">
+                                <div class="projects">
+                                    {% for project in career.projects %}
+                                        <div class="project-item">
+                                            <h6 id="project-name" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
+                                                {{ project.project_name_eng }}
+                                            </h6>
+                                            <!-- Other project fields... -->
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
+                <div class="tab-pane fade" id="personal">
+                    <div id="personalProjectList">
+                    {% for project in info.personal_projects %}
+                        <div class="personal-project-item">
+                            <h6 id="project-name" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
+                                {{ project.project_name_eng }}
+                            </h6>
+                            <!-- 다른 프로젝트 정보 필드들 -->
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
 
