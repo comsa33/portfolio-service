@@ -149,3 +149,35 @@ ul {
     font-size: .8em;
     text-align: left;
 }
+
+.company-info-container {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ecebeb;
+    border-radius: 5px;
+}
+
+#company-name-deparment {
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.company-date-position-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#company-position {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+#company-date {
+    font-size: 10px;
+    color: #606060;
+    margin-bottom: 0;
+}
+
