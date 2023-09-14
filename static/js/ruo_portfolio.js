@@ -33,7 +33,10 @@ function toggleSchoolInfo() {
 document.addEventListener("DOMContentLoaded", function() {
     let isEnglish = true;
 
-    var tab = new bootstrap.Tab(document.getElementById('corporate-tab'));
+    // Initialize tabs
+    var corporateTab = new bootstrap.Tab(document.getElementById('corporate-tab'));
+    var personalTab = new bootstrap.Tab(document.getElementById('personal-tab'));
+
 
     // Toggle text function without Markdown
     const toggleTextWithoutMarkdown = (selector, attrEng, attrKor) => {
