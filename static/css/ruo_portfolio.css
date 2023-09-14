@@ -150,19 +150,27 @@ ul {
 .company-info-container {
     margin-bottom: 10px;
     padding-bottom: 10px;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 5px 5px 0px 0px;
     border-bottom: 1px solid #dad6d6;
+    background-color: #808080;
+    color: white;
 }
 
-#company-name-deparment {
-    font-size: 17px;
+#company-name-department {
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 5px;
+    padding: 10px 10px 0px 10px;
 }
 
 .company-date-position-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    padding: 0 10px 0 10px;
 }
 
 #company-position, #project-sub-type {
@@ -170,7 +178,12 @@ ul {
     margin-bottom: 0;
 }
 
-#company-date, #project-date {
+#company-date {
+    font-size: 10px;
+    margin-bottom: 0;
+}
+
+#project-date {
     font-size: 10px;
     color: #606060;
     margin-bottom: 0;
@@ -194,4 +207,9 @@ ul {
 
 #project-name {
     margin-top: 10px;
+}
+
+#project-summary {
+    font-size: .8em;
+    color: gray;
 }
