@@ -243,6 +243,22 @@ ul {
 
 .project-link-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 10px;
+    gap: 15px;
+}
+
+#project-link, #code-link {
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#project-link a, #code-link a {
+    color: white;
 }
