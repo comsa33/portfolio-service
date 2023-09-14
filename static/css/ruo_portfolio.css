@@ -228,7 +228,7 @@ ul {
     font-size: .8em;
 }
 
-#project-role-description ul, #introduction ul {
+#project-role-description ul, #introduction ul, #project-issue-description ul {
     list-style-type: disc;
     padding-left: 15px;
 }
