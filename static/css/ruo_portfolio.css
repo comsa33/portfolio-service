@@ -40,7 +40,11 @@ body {
     font-weight: 300;
     color: dimgray;
 }
-  
+
+#introduction h3 {
+    font-size: 17px;
+}
+
 .education-info h2,
 .skill-info h2,
 .career-info h2 {
@@ -223,7 +227,7 @@ ul {
     font-size: .8em;
 }
 
-#project-role-description ul {
+#project-role-description ul, #introduction ul {
     list-style-type: disc;
     padding-left: 15px;
 }
