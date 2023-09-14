@@ -149,6 +149,10 @@ ul {
     background-color: #000000;
 }
 
+.nav-link {
+    color: #000000;
+}
+
 .career-item, #personalProjectList {
     background-color: #ecebeb;
     border-radius: 5px;
