@@ -214,8 +214,18 @@ ul {
     color: gray;
 }
 
-#project-role-description {
+#project-role-title, #project-issue-title {
+    margin-bottom: 5px;
     font-size: .9em;
+}
+
+#project-role-description {
+    font-size: .8em;
+}
+
+#project-role-description ul {
+    list-style-type: disc;
+    padding-left: 15px;
 }
 
 #project-issue-description {
