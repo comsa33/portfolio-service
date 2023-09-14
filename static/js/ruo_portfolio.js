@@ -118,11 +118,13 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#project-sub-type', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-name', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-summary', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#project-role-title', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-role-description', 'data-eng', 'data-kor');
+        toggleTextWithoutMarkdown('#project-issue-title', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-issue-description', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-link a', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#code-link a', 'data-eng', 'data-kor');
-        
+
 
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');

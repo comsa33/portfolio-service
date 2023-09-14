@@ -10,7 +10,7 @@ body {
 }
 
 #labelLanguage{
-    color: gray;
+    color: #464545;
     font-size: .9em;
     font-weight: 300;
 }
@@ -212,4 +212,12 @@ ul {
 #project-summary {
     font-size: .8em;
     color: gray;
+}
+
+#project-role-description {
+    font-size: .9em;
+}
+
+#project-issue-description {
+    font-size: .8em;
 }
