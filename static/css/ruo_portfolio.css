@@ -17,6 +17,7 @@ body {
 
 .basic-info h1 {
     font-size: 36px;
+    font-weight: 900;
 }
 
 .basic-info h6 {
@@ -83,6 +84,7 @@ ul {
 }
 
 .school-info {
+    cursor: pointer;
     display: inline-block;
     vertical-align: middle;
 }
