@@ -139,25 +139,50 @@
                                     <strong class="company-name">{{ career.company_name_eng }}</strong> | {{ career.department_eng }}
                                 </p>
                                 <div class="company-date-position-container">
-                                    <p id="company-date">
-                                        {{ career.start_date }} ~ {{ career.end_date }}
-                                    </p>
                                     <p id="company-position" data-eng="{{ career.position_eng }}" data-kor="{{ career.position_kor }}">
                                         {{ career.position_eng }}
+                                    </p>
+                                    <p id="company-date">
+                                        {{ career.start_date }} ~ {{ career.end_date }}
                                     </p>
                                 </div>
                             </div>
                             <div class="project-info-container">
-                                <div class="projects">
-                                    {% for project in career.projects %}
-                                        <div class="project-item">
-                                            <h6 id="project-name" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
-                                                {{ project.project_name_eng }}
-                                            </h6>
-                                            <!-- Other project fields... -->
+                                {% for project in career.projects %}
+                                    <div class="project-item">
+                                        <div class="project-sub-type-date-container">
+                                            <p id="project-sub-type" data-eng="{{ project.project_sub_type_eng }}" data-kor="{{ project.project_sub_type_kor }}">
+                                                {{ project.project_sub_type_eng }}
+                                            </p>
+                                            <p id="project-date">
+                                                {{ project.start_date }} ~ {{ project.end_date }}
+                                            </p>
                                         </div>
-                                    {% endfor %}
-                                </div>
+                                        <h6 id="project-name" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
+                                            {{ project.project_name_eng }}
+                                        </h6>
+                                        <p id="project-summary" data-eng="{{ project.summary_eng }}" data-kor="{{ project.summary_kor }}">
+                                            {{ project.summary_eng }}
+                                        </p>
+                                        <p id="project-role-description" data-eng="{{ project.role_description_eng }}" data-kor="{{ project.role_description_kor }}">
+                                            {{ project.role_description_eng }}
+                                        </p>
+                                        <p id="project-issue-description" data-eng="{{ project.issue_description_eng }}" data-kor="{{ project.issue_description_kor }}">
+                                            {{ project.issue_description_eng }}
+                                        </p>
+                                        <div id="project-link">
+                                            {% if project.link %}
+                                                <a href="{{ project.project_link }}" target="_blank" data-eng="Link" data-kor="링크">Link</a>
+                                            {% endif %}
+                                        </div>
+                                        <div id="code-link">
+                                            {% if project.code_link %}
+                                                <a href="{{ project.code_link }}" target="_blank" data-eng="Code" data-kor="코드">Code</a>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Other project fields... -->
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                     {% endfor %}
@@ -167,10 +192,36 @@
                     <div id="personalProjectList">
                     {% for project in info.personal_projects %}
                         <div class="personal-project-item">
+                            <div class="project-sub-type-date-container">
+                                <p id="project-sub-type" data-eng="{{ project.project_sub_type_eng }}" data-kor="{{ project.project_sub_type_kor }}">
+                                    {{ project.project_sub_type_eng }}
+                                </p>
+                                <p id="project-date">
+                                    {{ project.start_date }} ~ {{ project.end_date }}
+                                </p>
+                            </div>
                             <h6 id="project-name" data-eng="{{ project.project_name_eng }}" data-kor="{{ project.project_name_kor }}">
                                 {{ project.project_name_eng }}
                             </h6>
-                            <!-- 다른 프로젝트 정보 필드들 -->
+                            <p id="project-summary" data-eng="{{ project.summary_eng }}" data-kor="{{ project.summary_kor }}">
+                                {{ project.summary_eng }}
+                            </p>
+                            <p id="project-role-description" data-eng="{{ project.role_description_eng }}" data-kor="{{ project.role_description_kor }}">
+                                {{ project.role_description_eng }}
+                            </p>
+                            <p id="project-issue-description" data-eng="{{ project.issue_description_eng }}" data-kor="{{ project.issue_description_kor }}">
+                                {{ project.issue_description_eng }}
+                            </p>
+                            <div id="project-link">
+                                {% if project.link %}
+                                    <a href="{{ project.project_link }}" target="_blank" data-eng="Link" data-kor="링크">Link</a>
+                                {% endif %}
+                            </div>
+                            <div id="code-link">
+                                {% if project.code_link %}
+                                    <a href="{{ project.code_link }}" target="_blank" data-eng="Code" data-kor="코드">Code</a>
+                                {% endif %}
+                            </div>
                         </div>
                     {% endfor %}
                     </div>
