@@ -64,20 +64,22 @@
             </h2>
             <ul id="educationList">
             {% for edu in info.educations %}
-            <li class="school-item toggle-icon-wrapper">
-                <span>
-                    <i class="fa fa-chevron-right toggle-icon"></i>
-                </span>
-
-                <span id="school-info" class="school-info">
-                    <div class="school-main-info" data-eng="<strong class='school-name'>{{ edu.school_name_eng }}</strong> {{ edu.degree_eng }} | {{ edu.major_eng }}" data-kor="<strong class='school-name'>{{ edu.school_name_kor }}</strong> {{ edu.degree_kor }}  | {{ edu.major_kor }}">
-                        <strong class='school-name'>{{ edu.school_name_eng }}</strong> {{ edu.degree_eng }} | {{ edu.major_eng }}
-                    </div>
-
-                    <div class="school-date-info">
-                        {{ edu.start_date }} ~ {{ edu.end_date }}
-                    </div>
-                </span>
+            <li class="school-item">
+                <div class="toggle-icon-wrapper">
+                    <span>
+                        <i class="fa fa-chevron-right toggle-icon"></i>
+                    </span>
+    
+                    <span id="school-info" class="school-info">
+                        <div class="school-main-info" data-eng="<strong class='school-name'>{{ edu.school_name_eng }}</strong> {{ edu.degree_eng }} | {{ edu.major_eng }}" data-kor="<strong class='school-name'>{{ edu.school_name_kor }}</strong> {{ edu.degree_kor }}  | {{ edu.major_kor }}">
+                            <strong class='school-name'>{{ edu.school_name_eng }}</strong> {{ edu.degree_eng }} | {{ edu.major_eng }}
+                        </div>
+    
+                        <div class="school-date-info">
+                            {{ edu.start_date }} ~ {{ edu.end_date }}
+                        </div>
+                    </span>
+                </div>
 
                 <div id="school-description" class="school-description" data-eng="{{ edu.description_eng }}" data-kor="{{ edu.description_kor }}" style="display: none;">
                 {{ edu.description_eng }}
