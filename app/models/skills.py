@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from dateutil.relativedelta import relativedelta
+
 from .. import db
 
 
@@ -25,11 +27,23 @@ class Skill(db.Model):
     def to_dict(self):
         skill_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
-        # 현재 연도와 start_date의 연도를 비교하여 사용한 연도 계산
-        current_year = datetime.now().year
-        years_of_experience = current_year - self.start_date.year
+        # 현재 날짜와 start_date를 비교하여 연도와 개월 계산
+        current_date = datetime.now().date()
+        delta = relativedelta(current_date, self.start_date)
+        years_of_experience = delta.years
+        months_of_experience = delta.months
 
-        # 계산한 'years_of_experience' 값을 딕셔너리에 추가
-        skill_dict['years_of_experience'] = years_of_experience
+        if years_of_experience == 0 and months_of_experience > 0:
+            # 연도가 0이면서 개월이 1 이상인 경우, 개월로 표시
+            skill_dict['experience_eng'] = f"{months_of_experience} months"
+            skill_dict['experience_kor'] = f"{months_of_experience}개월"
+        elif years_of_experience > 0:
+            # 연도가 1 이상인 경우, 연도로 표시
+            skill_dict['experience_eng'] = f"{years_of_experience} years"
+            skill_dict['experience_kor'] = f"{years_of_experience}년"
+        else:
+            # 연도와 개월 모두 0인 경우 (1개월 미만)
+            skill_dict['experience_eng'] = "Less than a month"
+            skill_dict['experience_kor'] = "1개월 미만"
 
         return skill_dict

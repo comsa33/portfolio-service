@@ -97,9 +97,9 @@
                         {% for skill in skills %}
                             <li class="no-toggle skill-item"  data-bs-toggle="tooltip" data-bs-placement="top" data-eng="{{ skill.description_eng }}" data-kor="{{ skill.description_kor }}" title="{{ skill.description_eng }}">
                                 <div class="skill-name"
-                                    data-eng="<strong>{{ skill.skill_name_eng }} | {{ skill.years_of_experience }}yrs</strong> (tab to see description)"
-                                    data-kor="<strong>{{ skill.skill_name_kor }} | {{ skill.years_of_experience }}년</strong> (탭해서 설명보기)">
-                                    <strong>{{ skill.skill_name_eng }} | {{ skill.years_of_experience }}yrs</strong> (tab to see description)
+                                    data-eng="<strong>{{ skill.skill_name_eng }} | {{ skill.experience_eng }}</strong> (tab to see description)"
+                                    data-kor="<strong>{{ skill.skill_name_kor }} | {{ skill.experience_kor }}</strong> (탭해서 설명보기)">
+                                    <strong>{{ skill.skill_name_eng }} | {{ skill.experience_eng }}</strong> (tab to see description)
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: {{ skill.skill_level * 20 }}%" aria-valuenow="{{ skill.skill_level }}" aria-valuemin="0" aria-valuemax="5"></div>
