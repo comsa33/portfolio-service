@@ -119,10 +119,12 @@
             
             <!-- 탭 메뉴 추가 -->
             <ul class="nav nav-pills nav-fill">
-                <a class="nav-link active" id="corporate-tab" data-toggle="tab" href="#corporate" data-eng="Corporate Projects" data-kor="사내 프로젝트">
-                    Corporate Projects</a>
-                <a class="nav-link" id="personal-tab" data-toggle="tab" href="#personal" data-eng="Personal Projects" data-kor="개인 프로젝트">
-                    Personal Projects</a>
+                <li class="nav-item">
+                    <a class="nav-link active" id="corporate-tab" data-bs-toggle="tab" href="#corporate" role="tab" aria-controls="corporate" aria-selected="true" data-eng="Corporate Projects" data-kor="사내 프로젝트">Corporate Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="personal-tab" data-bs-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="false" data-eng="Personal Projects" data-kor="개인 프로젝트">Personal Projects</a>
+                </li>
             </ul>
 
             <!-- 탭 내용 -->
