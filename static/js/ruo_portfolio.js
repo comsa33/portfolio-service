@@ -33,6 +33,11 @@ function toggleSchoolInfo() {
 document.addEventListener("DOMContentLoaded", function() {
     let isEnglish = true;
 
+    // jQuery를 사용한 탭 초기화
+    $('.nav-tabs a').click(function(){
+        $(this).tab('show');
+    });
+    
     // Toggle text function without Markdown
     const toggleTextWithoutMarkdown = (selector, attrEng, attrKor) => {
         document.querySelectorAll(selector).forEach(el => {
