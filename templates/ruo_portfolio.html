@@ -175,24 +175,20 @@
                                             </p>
                                         </div>
                                         <div class="project-link-container">
-                                            <div id="project-link">
-                                                {% if project.project_link %}
+                                            {% if project.project_link %}
+                                                <div id="project-link">
                                                     <a href="{{ project.project_link }}" target="_blank">
                                                         <i class="fas fa-link"></i>
                                                     </a>
-                                                {% else %}
-                                                    <i class="fas fa-times" title="No Project Link"></i>
-                                                {% endif %}
-                                            </div>
-                                            <div id="code-link">
-                                                {% if project.code_link %}
+                                                </div>
+                                            {% endif %}
+                                            {% if project.code_link %}
+                                                <div id="code-link">
                                                     <a href="{{ project.code_link }}" target="_blank">
                                                         <i class="fas fa-code"></i>
                                                     </a>
-                                                {% else %}
-                                                    <i class="fas fa-times" title="No Source Code"></i>
-                                                {% endif %}
-                                            </div>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                         <!-- Other project fields... -->
                                     </div>
@@ -231,24 +227,20 @@
                                 </p>
                             </div>
                             <div class="project-link-container">
-                                <div id="project-link">
-                                    {% if project.project_link %}
+                                {% if project.project_link %}
+                                    <div id="project-link">
                                         <a href="{{ project.project_link }}" target="_blank">
                                             <i class="fas fa-link"></i>
                                         </a>
-                                    {% else %}
-                                        <i class="fas fa-times" title="No Project Link"></i>
-                                    {% endif %}
-                                </div>
-                                <div id="code-link">
-                                    {% if project.code_link %}
+                                    </div>
+                                {% endif %}
+                                {% if project.code_link %}
+                                    <div id="code-link">
                                         <a href="{{ project.code_link }}" target="_blank">
                                             <i class="fas fa-code"></i>
                                         </a>
-                                    {% else %}
-                                        <i class="fas fa-times" title="No Source Code"></i>
-                                    {% endif %}
-                                </div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
