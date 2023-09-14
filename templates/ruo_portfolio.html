@@ -174,15 +174,21 @@
                                                 {{ project.issue_description_eng }}
                                             </p>
                                         </div>
-                                        <div id="project-link">
-                                            {% if project.project_link %}
-                                                <a href="{{ project.project_link }}" target="_blank" data-eng="Link" data-kor="링크">Link</a>
-                                            {% endif %}
-                                        </div>
-                                        <div id="code-link">
-                                            {% if project.code_link %}
-                                                <a href="{{ project.code_link }}" target="_blank" data-eng="Code" data-kor="코드">Code</a>
-                                            {% endif %}
+                                        <div class="project-link-container">
+                                            <div id="project-link">
+                                                {% if project.project_link %}
+                                                    <a href="{{ project.project_link }}" target="_blank">
+                                                        <i class="fas fa-link"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                            <div id="code-link">
+                                                {% if project.code_link %}
+                                                    <a href="{{ project.code_link }}" target="_blank">
+                                                        <i class="fas fa-code"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
                                         </div>
                                         <!-- Other project fields... -->
                                     </div>
@@ -220,15 +226,21 @@
                                     {{ project.issue_description_eng }}
                                 </p>
                             </div>
-                            <div id="project-link">
-                                {% if project.project_link %}
-                                    <a href="{{ project.project_link }}" target="_blank" data-eng="Project Link" data-kor="프로젝트 링크">Project Link</a>
-                                {% endif %}
-                            </div>
-                            <div id="code-link">
-                                {% if project.code_link %}
-                                    <a href="{{ project.code_link }}" target="_blank" data-eng="Source Code" data-kor="소스 코드">Source Code</a>
-                                {% endif %}
+                            <div class="project-link-container">
+                                <div id="project-link">
+                                    {% if project.project_link %}
+                                        <a href="{{ project.project_link }}" target="_blank">
+                                            <i class="fas fa-link"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div id="code-link">
+                                    {% if project.code_link %}
+                                        <a href="{{ project.code_link }}" target="_blank">
+                                            <i class="fas fa-code"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
