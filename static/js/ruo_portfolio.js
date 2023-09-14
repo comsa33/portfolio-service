@@ -119,17 +119,17 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleTextWithoutMarkdown('#project-name', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-summary', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-role-title', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#project-role-description', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-issue-title', 'data-eng', 'data-kor');
-        toggleTextWithoutMarkdown('#project-issue-description', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#project-link a', 'data-eng', 'data-kor');
         toggleTextWithoutMarkdown('#code-link a', 'data-eng', 'data-kor');
-
-
+        
+        
         // Toggle text for Markdown elements
         toggleTextWithMarkdown('#introduction', 'data-eng', 'data-kor');
         toggleTextWithMarkdown('#school-description', 'data-eng', 'data-kor');
-
+        toggleTextWithMarkdown('#project-role-description', 'data-eng', 'data-kor');
+        toggleTextWithMarkdown('#project-issue-description', 'data-eng', 'data-kor');
+        
         // 언어를 토글할 때 툴팁의 title도 업데이트
         updateTooltipTitle();
     });
