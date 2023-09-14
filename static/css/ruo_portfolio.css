@@ -140,7 +140,7 @@ ul {
     text-align: left;
 }
 
-.career-item {
+.career-item, #personalProjectList {
     background-color: #ecebeb;
     border-radius: 5px;
     padding: 10px;
@@ -150,7 +150,6 @@ ul {
 .company-info-container {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    padding: 10px;
     border-bottom: 1px solid #dad6d6;
 }
 
@@ -181,8 +180,18 @@ ul {
     margin-top: 15px;
 }
 
+.project-item, .personal-project-item {
+    border-bottom: 1px solid #dad6d6;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
 .project-sub-type-date-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+#project-name {
+    margin-top: 10px;
 }
