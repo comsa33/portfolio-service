@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from .. import db
 
 
@@ -21,4 +23,13 @@ class Skill(db.Model):
         return f'Skill {self.id}'
 
     def to_dict(self):
-        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+        skill_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
+
+        # 현재 연도와 start_date의 연도를 비교하여 사용한 연도 계산
+        current_year = datetime.now().year
+        years_of_experience = current_year - self.start_date.year
+
+        # 계산한 'years_of_experience' 값을 딕셔너리에 추가
+        skill_dict['years_of_experience'] = years_of_experience
+
+        return skill_dict
