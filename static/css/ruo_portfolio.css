@@ -144,6 +144,11 @@ ul {
     text-align: left;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #000000;
+}
+
 .career-item, #personalProjectList {
     background-color: #ecebeb;
     border-radius: 5px;
